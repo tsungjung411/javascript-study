@@ -8,8 +8,9 @@
 
 ## 其他主題
  - [Who’s “this” in Javascript](https://goo.gl/GW1Yj4)
- - [JavaScript ES6 Promise](https://wcc723.github.io/life/2017/05/25/promise/)
- - [[MDN] Promise​.prototype​.then()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+ - [[卡斯伯] JavaScript ES6 Promise](https://wcc723.github.io/life/2017/05/25/promise/)
+ - [[卡斯伯] 鐵人賽：JavaScript Await 與 Async](https://wcc723.github.io/javascript/2017/12/30/javascript-async-await/)
+ - [[MDN] Promise.prototype.then()](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
    - pending (擱置)
    - resolved (被實現)
    - rejected (被拒絕)
