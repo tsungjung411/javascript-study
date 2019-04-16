@@ -8,3 +8,4 @@
 
 ## 其他主題
  - [Who’s “this” in Javascript](https://goo.gl/GW1Yj4)
+ - [JavaScript ES6 Promise](https://wcc723.github.io/life/2017/05/25/promise/)
