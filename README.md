@@ -8,6 +8,7 @@
 
 ## 其他主題
  - [Who’s “this” in Javascript](https://goo.gl/GW1Yj4)
+ - [[卡斯伯] 鐵人賽：ES6 開始的新生活 let, const](https://wcc723.github.io/javascript/2017/12/20/javascript-es6-let-const/)
  - [[卡斯伯] JavaScript ES6 Promise](https://wcc723.github.io/life/2017/05/25/promise/)
  - [[卡斯伯] 鐵人賽：JavaScript Await 與 Async](https://wcc723.github.io/javascript/2017/12/30/javascript-async-await/)
    - await (等待) (sync / synchronize / 同步)
