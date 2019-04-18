@@ -2,6 +2,45 @@
 ## let, var 變數在 for-loop 裡的行為
 
 ### Case1
+#### 程式碼
+```javascript
+for (var x = 1; x <= 3; x++) {
+    f = function() {
+        console.log("x =", x);
+    }
+    f();
+}
+
+for (let x = 1; x <= 3; x++) {
+    f = function() {
+        console.log("x =", x);
+    }
+    f();
+}
+```
+
+#### 執行結果：
+```
+# 第一個 for-loop 
+x = 1
+x = 2
+x = 3
+
+# 第二個 for-loop 
+x = 1
+x = 2
+x = 3
+```
+
+#### 說明：
+看起來沒有什麽差異性
+
+<br>
+<hr>
+<br>
+
+### Case2
+#### 程式碼
 ```javascript
 for (var x = 1; x <= 3; x++) {
     f = function() {
@@ -18,7 +57,7 @@ for (let x = 1; x <= 3; x++) {
 }
 ```
 
-執行結果：
+#### 執行結果：
 ```
 # 第一個 for-loop 
 x = 4
@@ -30,7 +69,8 @@ x = 1
 x = 2
 x = 3
 ```
-**說明：**
+
+#### 說明：
 因為 JS 是單一執行緒，setTimeout 會在 for-loop 離開後才執行
 就像是
 ```java
@@ -42,36 +82,33 @@ y = x + 10;
 x = x + 1;
 ```
 
+所以，解譯後的結果：
+```javascript
+for (var x = 1; x <= 3; x++) {
+}
+{
+    console.log("x =", x);
+}
+
+for (let x = 1; x <= 3; x++) {
+}
+{
+    const x = 1
+    console.log("x =", x);
+}
+{
+    const x = 2
+    console.log("x =", x);
+}
+{
+    const x = 3
+    console.log("x =", x);
+}
+```
+
 <br>
 <hr>
 <br>
 
-### Case2
-```javascript
-for (var x = 1; x <= 3; x++) {
-    f = function() {
-        console.log("x =", x);
-    }
-    f();
-}
+### Case3
 
-for (let x = 1; x <= 3; x++) {
-    f = function() {
-        console.log("x =", x);
-    }
-    f();
-}
-```
-
-執行結果：
-```
-# 第一個 for-loop 
-x = 1
-x = 2
-x = 3
-
-# 第二個 for-loop 
-x = 1
-x = 2
-x = 3
-```
