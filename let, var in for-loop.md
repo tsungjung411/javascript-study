@@ -138,7 +138,7 @@ for (var x = 1; x <= 3; x++) {
 ```
 
 #### 直譯結果1:
-```
+```javascript
 for (var x = 1; x <= 3; x++) {
     console.log(`for: x = ${x}`)
     var var_x = 100 + x;
@@ -185,7 +185,7 @@ let_x = 103
 ```
 
 #### 程式碼2
-```
+```javascript
 for (let x = 1; x <= 3; x++) {
     console.log(`for: x = ${x}`)
     var var_x = 100 + x;
@@ -196,6 +196,34 @@ for (let x = 1; x <= 3; x++) {
         console.log("let_x =", let_x);
     }
     setTimeout(f);
+}
+```
+
+#### 直譯結果2:
+```javascript
+for (let x = 1; x <= 3; x++) {
+    console.log(`for: x = ${x}`)
+    var var_x = 100 + x;
+    let let_x = 100 + x;
+}
+
+{
+    let let_x = 100 + 1; // x=1
+    console.log("(let) x =", x);
+    console.log("var_x =", var_x);
+    console.log("let_x =", let_x);
+}
+{
+    let let_x = 100 + 2; // x=2
+    console.log("(let) x =", x);
+    console.log("var_x =", var_x);
+    console.log("let_x =", let_x);
+}
+{
+    let let_x = 100 + 3; // x=3
+    console.log("(let) x =", x);
+    console.log("var_x =", var_x);
+    console.log("let_x =", let_x);
 }
 ```
 
