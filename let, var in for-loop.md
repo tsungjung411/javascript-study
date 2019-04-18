@@ -91,6 +91,7 @@ x = x + 1;
 ```javascript
 for (var x = 1; x <= 3; x++) {
 }
+// TODO List
 {
     console.log("x =", x);
 }
@@ -101,9 +102,10 @@ for (var x = 1; x <= 3; x++) {
     console.log("x =", x);
 }
 
-// TODO List
+
 for (let x = 1; x <= 3; x++) {
 }
+// TODO List
 {
     const x = 1;
     console.log("x =", x);
