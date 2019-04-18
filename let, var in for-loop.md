@@ -122,4 +122,70 @@ for (let x = 1; x <= 3; x++) {
 <br>
 
 ### Case3
+#### 程式碼1
+```javascript
+for (var x = 1; x <= 3; x++) {
+    console.log(`for: x = ${x}`)
+    var var_x = 100 + x;
+    let let_x = 100 + x;
+    f = function() {
+        console.log("(var) x =", x);
+        console.log("var_x =", var_x);
+        console.log("let_x =", let_x);
+    }
+    setTimeout(f);
+}
+```
 
+#### 執行結果1：
+```
+for: x = 1
+for: x = 2
+for: x = 3
+
+(var) x = 4
+var_x = 103
+let_x = 101
+
+(var) x = 4
+var_x = 103
+let_x = 102
+
+(var) x = 4
+var_x = 103
+let_x = 103
+```
+
+#### 程式碼2
+```
+for (let x = 1; x <= 3; x++) {
+    console.log(`for: x = ${x}`)
+    var var_x = 100 + x;
+    let let_x = 100 + x;
+    f = function() {
+        console.log("(let) x =", x);
+        console.log("var_x =", var_x);
+        console.log("let_x =", let_x);
+    }
+    setTimeout(f);
+}
+```
+
+#### 執行結果2：
+```
+for: x = 1
+for: x = 2
+for: x = 3
+
+(let) x = 1
+var_x = 103
+let_x = 101
+
+(let) x = 2
+var_x = 103
+let_x = 102
+
+(let) x = 3
+var_x = 103
+let_x = 103
+```
