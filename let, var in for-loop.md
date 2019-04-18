@@ -150,19 +150,19 @@ for (var x = 1; x <= 3; x++) {
 
 // TODO List
 {
-    const let_x = 100 + 1; // x=1
+    let let_x = 100 + 1; // x=1
     console.log("(var) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    const let_x = 100 + 2; // x=2
+    let let_x = 100 + 2; // x=2
     console.log("(var) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    const t_x = 100 + 3; // x=3
+    let t_x = 100 + 3; // x=3
     console.log("(var) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
@@ -213,22 +213,22 @@ for (let x = 1; x <= 3; x++) {
 
 // TODO List
 {
-    const x = 1;
-    const let_x = 100 + 1; // x=1
+    let x = 1;
+    let let_x = 100 + 1; // x=1
     console.log("(let) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    const x = 2;
-    const let_x = 100 + 2; // x=2
+    let x = 2;
+    let let_x = 100 + 2; // x=2
     console.log("(let) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    const x = 3;
-    const let_x = 100 + 3; // x=3
+    let x = 3;
+    let let_x = 100 + 3; // x=3
     console.log("(let) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
