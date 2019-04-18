@@ -41,6 +41,10 @@ x = 3
 
 ### Case2
 #### 程式碼
+- setTimeout 的概念，就是設定「多少時間過後，開始執行」的函數。
+- 就像是 todo list，後面要做哪些事
+- 若沒有指定時間，則 elapsed time = 0
+
 ```javascript
 for (var x = 1; x <= 3; x++) {
     f = function() {
