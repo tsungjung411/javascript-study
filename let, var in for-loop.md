@@ -72,6 +72,7 @@ x = 3
 
 #### 說明：
 因為 JS 是單一執行緒，setTimeout 會在 for-loop 離開後才執行
+
 就像是
 ```java
 y = x++ + 10;
