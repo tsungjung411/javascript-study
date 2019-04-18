@@ -90,6 +90,12 @@ for (var x = 1; x <= 3; x++) {
 {
     console.log("x =", x);
 }
+{
+    console.log("x =", x);
+}
+{
+    console.log("x =", x);
+}
 
 for (let x = 1; x <= 3; x++) {
 }
