@@ -139,7 +139,30 @@ for (var x = 1; x <= 3; x++) {
 
 #### 直譯結果1:
 ```
+for (var x = 1; x <= 3; x++) {
+    console.log(`for: x = ${x}`)
+    var var_x = 100 + x;
+    let let_x = 100 + x;
+}
 
+{
+    let let_x = 100 + 1; // x=1
+    console.log("(var) x =", x);
+    console.log("var_x =", var_x);
+    console.log("let_x =", let_x);
+}
+{
+    let let_x = 100 + 2; // x=2
+    console.log("(var) x =", x);
+    console.log("var_x =", var_x);
+    console.log("let_x =", let_x);
+}
+{
+    let let_x = 100 + 3; // x=3
+    console.log("(var) x =", x);
+    console.log("var_x =", var_x);
+    console.log("let_x =", let_x);
+}
 ```
 
 #### 執行結果1：
