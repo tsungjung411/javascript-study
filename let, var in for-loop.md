@@ -100,15 +100,15 @@ for (var x = 1; x <= 3; x++) {
 for (let x = 1; x <= 3; x++) {
 }
 {
-    const x = 1
+    const x = 1;
     console.log("x =", x);
 }
 {
-    const x = 2
+    const x = 2;
     console.log("x =", x);
 }
 {
-    const x = 3
+    const x = 3;
     console.log("x =", x);
 }
 ```
