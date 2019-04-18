@@ -101,6 +101,7 @@ for (var x = 1; x <= 3; x++) {
     console.log("x =", x);
 }
 
+// TODO List
 for (let x = 1; x <= 3; x++) {
 }
 {
@@ -145,20 +146,21 @@ for (var x = 1; x <= 3; x++) {
     let let_x = 100 + x;
 }
 
+// TODO List
 {
-    let let_x = 100 + 1; // x=1
+    const let_x = 100 + 1; // x=1
     console.log("(var) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    let let_x = 100 + 2; // x=2
+    const let_x = 100 + 2; // x=2
     console.log("(var) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    let let_x = 100 + 3; // x=3
+    const t_x = 100 + 3; // x=3
     console.log("(var) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
@@ -207,20 +209,24 @@ for (let x = 1; x <= 3; x++) {
     let let_x = 100 + x;
 }
 
+// TODO List
 {
-    let let_x = 100 + 1; // x=1
+    const x = 1;
+    const let_x = 100 + 1; // x=1
     console.log("(let) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    let let_x = 100 + 2; // x=2
+    const x = 2;
+    const let_x = 100 + 2; // x=2
     console.log("(let) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
 }
 {
-    let let_x = 100 + 3; // x=3
+    const x = 3;
+    const let_x = 100 + 3; // x=3
     console.log("(let) x =", x);
     console.log("var_x =", var_x);
     console.log("let_x =", let_x);
