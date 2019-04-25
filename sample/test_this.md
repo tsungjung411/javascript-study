@@ -33,7 +33,7 @@ const person = {
         console.log(`> this1: ${this}`);
         console.log(`> name1:${this.name}`);
         
-            // inner functions
+        // inner functions
         const getBalance2 = function() {
             console.log(`>> this2: ${this}`);
             console.log(`>> name2:${this.name}`);
