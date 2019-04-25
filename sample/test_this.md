@@ -13,10 +13,10 @@
     
   - inner function 規則同此。<br>
   
-- 在箭頭函數(arrow function)裡，this 所參考的對象決取於：**箭頭函數定義所在位置**
-  - 箭頭函數如果定義在物件裡，this 所參考的對象就是該物件<br>
-  - 因為箭頭函數本身並沒有 this 資訊，它會往外層找<br>
+- 在箭頭函數(arrow function)裡，this 所參考的對象決取於：
+  - **箭頭函數本身並沒有 this 資訊**，它會往外層找<br>
     如果外層又是箭頭函數，則繼續往外層找<br>
+    
   - inner arrow-function 規則同此。<br>
 
 ### 範例程式
@@ -28,8 +28,12 @@
 const person = {
     name: 'tj_tsai',
     balance: 1000,
+    greeting: () => {
+        console.log('---------- arrow function: greeting ----------');
+        console.log(`>> Hello, this: ${this}`);
+    },
     showAsset: function() {
-        console.log('---------- showAsset ----------');
+        console.log('---------- function: showAsset ----------');
         console.log(`> this1: ${this}`);
         console.log(`> name1:${this.name}`);
         
@@ -49,16 +53,25 @@ const person = {
         getBalance3();
 
         return [getBalance2, getBalance3];
-    }
+    },
+
 }
 
+console.log('\n---------- test functions with the person object ----------');
+person.greeting();
 const getBalances = person.showAsset();
 const getBalance2 = getBalances[0];
 const getBalance3 = getBalances[1];
 
-console.log('---------- test inner functions ----------');
+console.log('\n---------- test inner functions ----------');
 getBalance2();
 getBalance3();
+
+console.log('\n---------- test functions without the person object ----------');
+const greeting = person.greeting;
+greeting();
+const showAsset = person.showAsset;
+showAsset();
 </script>
 
 </body>
@@ -67,24 +80,38 @@ getBalance3();
 
 ### 執行結果
 ```
----------- showAsset ----------
+
+---------- test functions with the person object ----------
+---------- arrow function: greeting ----------
+>> Hello, this: [object Window]
+---------- function: showAsset ----------
 > this1: [object Object]
 > name1:tj_tsai
-
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
-
 >>> this3: [object Object]
 >>> name3:tj_tsai
 >>> balance3:1000
 
----------- test inner function ----------
+---------- test inner functions ----------
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
-
 >>> this3: [object Object]
 >>> name3:tj_tsai
 >>> balance3:1000
+
+---------- test functions without the person object ----------
+---------- arrow function: greeting ----------
+>> Hello, this: [object Window]
+---------- function: showAsset ----------
+> this1: [object Window]
+> name1:
+>> this2: [object Window]
+>> name2:
+>> balance2:undefined
+>>> this3: [object Window]
+>>> name3:
+>>> balance3:undefined
 ```
