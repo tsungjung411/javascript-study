@@ -87,9 +87,11 @@ showAsset();
 ---------- function: showAsset ----------
 > this1: [object Object]
 > name1:tj_tsai
+
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
+
 >>> this3: [object Object]
 >>> name3:tj_tsai
 >>> balance3:1000
@@ -98,9 +100,11 @@ showAsset();
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
+
 >>> this3: [object Object]
 >>> name3:tj_tsai
 >>> balance3:1000
+
 
 ---------- test functions without the person object ----------
 ---------- arrow function: greeting ----------
@@ -108,9 +112,11 @@ showAsset();
 ---------- function: showAsset ----------
 > this1: [object Window]
 > name1:
+
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
+
 >>> this3: [object Window]
 >>> name3:
 >>> balance3:undefined
