@@ -31,17 +31,21 @@ const person = {
     greeting: () => {
         console.log('---------- arrow function: greeting ----------');
         console.log(`>> Hello, this: ${this}`);
+        console.log('');
     },
     showAsset: function() {
         console.log('---------- function: showAsset ----------');
         console.log(`> this1: ${this}`);
         console.log(`> name1:${this.name}`);
+        let self = "__person__object__";
         
         // inner functions
         const getBalance2 = function() {
             console.log(`>> this2: ${this}`);
             console.log(`>> name2:${this.name}`);
             console.log(`>> balance2:${this.balance}`);
+            console.log(`>> self: ${self}`);
+            console.log('');
         };
         getBalance2();
 
@@ -49,12 +53,14 @@ const person = {
             console.log(`>>> this3: ${this}`);
             console.log(`>>> name3:${this.name}`);
             console.log(`>>> balance3:${this.balance}`);
+            console.log(`>>> self: ${self}`);
+            console.log('');
         };
         getBalance3();
-
+        self = "__null__object__";
+        
         return [getBalance2, getBalance3];
     },
-
 }
 
 console.log('\n---------- test functions with the person object ----------');
@@ -80,44 +86,53 @@ showAsset();
 
 ### 執行結果
 ```
-
 ---------- test functions with the person object ----------
 ---------- arrow function: greeting ----------
 >> Hello, this: [object Window]
+
 ---------- function: showAsset ----------
 > this1: [object Object]
 > name1:tj_tsai
-
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
+>> self: __person__object__
 
 >>> this3: [object Object]
 >>> name3:tj_tsai
 >>> balance3:1000
+>>> self: __person__object__
+
 
 ---------- test inner functions ----------
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
+>> self: __null__object__
 
 >>> this3: [object Object]
 >>> name3:tj_tsai
 >>> balance3:1000
+>>> self: __null__object__
 
 
 ---------- test functions without the person object ----------
 ---------- arrow function: greeting ----------
 >> Hello, this: [object Window]
+
 ---------- function: showAsset ----------
 > this1: [object Window]
 > name1:
-
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
+>> self: __person__object__
 
 >>> this3: [object Window]
 >>> name3:
 >>> balance3:undefined
+>>> self: __person__object__
 ```
+
+- 對於 inner function / inner arrow function
+  <br>變數是傳參考，因此 self 在內部執行，跟後來才執行的值不同
