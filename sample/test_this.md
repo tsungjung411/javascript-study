@@ -17,7 +17,7 @@
   - 箭頭函數如果定義在物件裡，this 所參考的對象就是該物件<br>
   - 因為箭頭函數本身並沒有 this 資訊，它會往外層找<br>
     如果外層又是箭頭函數，則繼續往外層找<br>
-  - inner function 規則同此。<br>
+  - inner arrow-function 規則同此。<br>
 
 ### 範例程式
 ```html
