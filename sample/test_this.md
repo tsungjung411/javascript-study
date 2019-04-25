@@ -30,6 +30,7 @@ const person = {
 		console.log(`> this1: ${this}`);
 		console.log(`> name1:${this.name}`);
 		
+	        // inner functions
 		const getBalance2 = function() {
 			console.log(`>> this2: ${this}`);
 			console.log(`>> name2:${this.name}`);
@@ -52,7 +53,7 @@ const getBalances = person.showAsset();
 const getBalance2 = getBalances[0];
 const getBalance3 = getBalances[1];
 
-console.log('---------- test inner function ----------');
+console.log('---------- test inner functions ----------');
 getBalance2();
 getBalance3();
 </script>
