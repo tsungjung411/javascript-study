@@ -23,30 +23,30 @@
 
 <script>
 const person = {
-	name: 'tj_tsai',
-	balance: 1000,
-	showAsset: function() {
-		console.log('---------- showAsset ----------');
-		console.log(`> this1: ${this}`);
-		console.log(`> name1:${this.name}`);
-		
-	        // inner functions
-		const getBalance2 = function() {
-			console.log(`>> this2: ${this}`);
-			console.log(`>> name2:${this.name}`);
-			console.log(`>> balance2:${this.balance}`);
-		};
-		getBalance2();
+    name: 'tj_tsai',
+    balance: 1000,
+    showAsset: function() {
+        console.log('---------- showAsset ----------');
+        console.log(`> this1: ${this}`);
+        console.log(`> name1:${this.name}`);
+        
+            // inner functions
+        const getBalance2 = function() {
+            console.log(`>> this2: ${this}`);
+            console.log(`>> name2:${this.name}`);
+            console.log(`>> balance2:${this.balance}`);
+        };
+        getBalance2();
 
-		const getBalance3 = () => {
-			console.log(`>>> this3: ${this}`);
-			console.log(`>>> name3:${this.name}`);
-			console.log(`>>> balance3:${this.balance}`);
-		};
-		getBalance3();
+        const getBalance3 = () => {
+            console.log(`>>> this3: ${this}`);
+            console.log(`>>> name3:${this.name}`);
+            console.log(`>>> balance3:${this.balance}`);
+        };
+        getBalance3();
 
         return [getBalance2, getBalance3];
-	}
+    }
 }
 
 const getBalances = person.showAsset();
