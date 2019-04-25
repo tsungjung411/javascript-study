@@ -1,7 +1,10 @@
 
 ## 在一般函數/箭頭函數裡，測試 this 指標
 
- - [Who’s “this” in Javascript](https://medium.com/%E5%89%8D%E7%AB%AF%E6%97%A5%E8%A8%98/whos-this-in-javascript-c9dbac17a7b0?fbclid=IwAR2i0zjCukCDVtWtGQK2asp3fEQ4xX1nE0bqE9OrXJW7-MetOARUn880IIE)
+### 參考資料
+ - [Who’s “this” in Javascript](https://medium.com/%E5%89%8D%E7%AB%AF%E6%97%A5%E8%A8%98/whos-this-in-javascript-c9dbac17a7b0?fbclid=IwAR2i0zjCukCDVtWtGQK2asp3fEQ4xX1nE0bqE9OrXJW7-MetOARUn880IIE) (但說法有瑕疵)
+
+<br>
 
 ### 請先注意規則，再來看程式
 - 在一般函數(function)裡，this 所參考的對象決取於：**是不是由物件來執行，而非函數定義所在位置**
@@ -23,6 +26,8 @@
     
   - inner arrow-function 規則同此。
     <br>
+    
+<br>
 
 ### 範例程式
 ```html
