@@ -5,19 +5,24 @@
 
 ### 請先注意，再看程式
 - 在一般函數(function)裡，this 所參考的對象決取於：**是不是由物件來執行，而非函數定義所在位置**
-  - 由物件來執行一般函數時<br>
-    如 abcObj.run()，則 run() 裡拿到的 this 是 abcObj 本身。<br>
+  - 由物件來執行一般函數時
+    <br>如 abcObj.run()，則 run() 裡拿到的 this 是 abcObj 本身。
+    <br>
     
-  - 不透過物件，直接執行 function 時<br>
-    如 run()，則 run() 裡拿到的 this 是 window 物件本身（也就是 global object）。<br>
+  - 不透過物件，直接執行 function 時
+    <br>如 run()，則 run() 裡拿到的 this 是 window 物件本身（也就是 global object）。
+    <br>
     
-  - inner function 規則同此。<br>
+  - inner function 規則同此。
+    <br>
   
 - 在箭頭函數(arrow function)裡，this 所參考的對象決取於：
-  - **箭頭函數本身並沒有 this 資訊**，它會往(目前變數可視範圍的)外層找<br>
-    如果外層又是箭頭函數，則繼續往外層找<br>
+  - **箭頭函數本身並沒有 this 資訊**，它會往(目前變數可視範圍的)外層找
+    <br>如果外層又是箭頭函數，則繼續往外層找
+    <br>
     
-  - inner arrow-function 規則同此。<br>
+  - inner arrow-function 規則同此。
+    <br>
 
 ### 範例程式
 ```html
@@ -136,3 +141,5 @@ showAsset();
 
 - 對於 inner function / inner arrow function
   <br>變數是傳參考，因此 self 在內部執行，跟後來才執行的值不同
+  <br>內部執行時，當時的值為 "__person__object__"
+  <br>後來執行時，當時的值為 "__person__object__"
