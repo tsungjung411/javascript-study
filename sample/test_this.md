@@ -14,7 +14,7 @@
   - inner function 規則同此。<br>
   
 - 在箭頭函數(arrow function)裡，this 所參考的對象決取於：
-  - **箭頭函數本身並沒有 this 資訊**，它會往外層找<br>
+  - **箭頭函數本身並沒有 this 資訊**，它會往(目前變數可視範圍的)外層找<br>
     如果外層又是箭頭函數，則繼續往外層找<br>
     
   - inner arrow-function 規則同此。<br>
