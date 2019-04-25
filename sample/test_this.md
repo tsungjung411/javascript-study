@@ -39,7 +39,7 @@ const getBalances = person.showAsset();
 const getBalance2 = getBalances[0];
 const getBalance3 = getBalances[1];
 
-console.log('---------- execute function pointers ----------');
+console.log('---------- test inner function ----------');
 getBalance2();
 getBalance3();
 </script>
@@ -62,7 +62,7 @@ getBalance3();
 >>> name3:tj_tsai
 >>> balance3:1000
 
----------- execute function pointers ----------
+---------- test inner function ----------
 >> this2: [object Window]
 >> name2:
 >> balance2:undefined
