@@ -147,4 +147,4 @@ showAsset();
 - 對於 inner function / inner arrow function
   <br>變數是傳參考，因此 self 在內部執行，跟後來才執行的值不同
   <br>內部執行時，當時的值為 "__person__object__"
-  <br>後來執行時，當時的值為 "__person__object__"
+  <br>後來執行時，當時的值為 "__null__object__"
