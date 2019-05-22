@@ -24,3 +24,6 @@
    - rejected (被拒絕)
    - fulfilled (實現)
    - rejection (拒絕)
+ - Deepcopy
+   - [用範例理解 Vue.js #16：實例 Vue Instance (deep copy) lodash.js 效能比較](https://ithelp.ithome.com.tw/articles/10193783)
+   - [[Javascript] 關於 JS 中的淺拷貝和深拷貝](http://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/)
