@@ -119,3 +119,7 @@ Dog: just call me Jack
 ## 結論
 - JS 宣告函數有三種方法，其中一種無法被繼承
 - 成員的屬性類型之函數，無法被繼承
+
+
+## 參考資料
+ - [定義類別](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Classes)
