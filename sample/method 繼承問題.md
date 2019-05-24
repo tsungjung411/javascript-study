@@ -41,6 +41,7 @@ dog.speak();
 ```
 eat: this: Dog {name: "Jack", eat: ƒ}
 name: Jack
+
 speak: this: Dog {name: "Jack", eat: ƒ}
 name: Jack
 Dog: speak: this:  Dog {name: "Jack", eat: ƒ}
@@ -103,20 +104,17 @@ dog.greet();
 ```
 eat: this: Dog {name: "Jack", eat: ƒ}
 name: Jack
+
 speak: this: Dog {name: "Jack", eat: ƒ}
 name: Jack
 Dog: speak: this:  Dog {name: "Jack", eat: ƒ}
-og: name: Jack
-
-
-dog.eat();
-dog.speak();
-VM894:7 eat: this: Dog {name: "Jack"}
-VM894:8 name: Jack
-Dog: eat:this:  Dog {name: "Jack"}
 Dog: name: Jack
-speak: this: Dog {name: "Jack"}
-name: Jack
-Dog: speak: this:  Dog {name: "Jack"}
-Dog: name: Jack
+
+greet: this: Dog {name: "Jack", eat: ƒ}
+my name is Jack
+Dog: greet: this:  Dog {name: "Jack", eat: ƒ}
+Dog: just call me Jack
 ```
+
+## 結論
+- 成員的屬性類型之函數，無法被繼承
