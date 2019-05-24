@@ -27,3 +27,7 @@
  - Deepcopy
    - [用範例理解 Vue.js #16：實例 Vue Instance (deep copy) lodash.js 效能比較](https://ithelp.ithome.com.tw/articles/10193783)
    - [[Javascript] 關於 JS 中的淺拷貝和深拷貝](http://larry850806.github.io/2016/09/20/shallow-vs-deep-copy/)
+ - JS6 有哪些瀏覽器有支援
+   - [Promise / async / await](https://caniuse.com/#feat=promises)
+   - [let](https://caniuse.com/#feat=let)
+   - [ES6 Class](https://caniuse.com/#feat=es6-class)
