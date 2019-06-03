@@ -97,23 +97,36 @@ promise.setFailureListener(failureCallback);
 <br>
 
 ## 實際模擬 Promise
+
+基本架構
 ```javascript
 var MyPromise = class {
     constructor(executor) {
-        let resolve = function() {
-            this.state = true; 
+        let resolve = () => {
+            this.mState = true; 
         };
-        let reject = function() {
-            this.state = false;
+        let reject = () => {
+            this.mState = false;
         };
         executor(resolve, reject);
     }
     then(taskExecutor) {
-        taskExecutor();
-        this.state = true;
+        if (this.mState) {
+            try {
+                taskExecutor();
+            } catch (e) {
+                // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
+                this.mState = false;
+            }
+        }
+        return this;
     }
     catch(errorHandler) {
-        this.state = false;
+        // 處理錯誤
+        errorHandler();
+        // 錯誤已經處理，回復狀態，可以接著執行後面的 .then(...)
+        this.mState = true;
+        return this;
     }
 }
 ```
