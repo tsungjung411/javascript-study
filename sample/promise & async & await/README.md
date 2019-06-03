@@ -165,31 +165,33 @@ var MyPromise = class {
 ### 定義好相關功能
 ```javascript
 function doSomething(successCallback, failureCallback) {
-    console.log("瀏覽 FB 某頁面A");
-    successCallback(true);
+    console.log("[Task1] 瀏覽 FB 某頁面A");
+    successCallback('HTTP 200');
 }
 
-function doSomethingElse(successCallback, failureCallback) {
-    console.log("頁面自動轉到：使用者登入頁面");
-    console.log("登入檢查中...");
+function doSomethingElse(fromResult1, successCallback, failureCallback) {
+    console.log("[Task2] fromResult1:", fromResult1);
+    console.log("[Task2] 頁面自動轉到：使用者登入頁面");
+    console.log("[Task2] 登入檢查中...");
     
     // 隨機產生 true(50%) 或 false(50%)
     var trueOfFalse = parseInt(Math.floor(Math.random() * 2));
     if (trueOfFalse) {
-        successCallback(true);
+        successCallback(true); // allow to access
     } else {
         failureCallback('登入失敗');
     }
 }
 
-function doThirdThing(successCallback, failureCallback) {
-    console.log("自動轉回原本頁面A");
+function doThirdThing(result2, successCallback, failureCallback) {
+    console.log("[Task2] allowToAcccess:", fromResult2);
+    console.log("[Task3] 自動轉回原本頁面A");
     successCallback(true);
 }
 
 function failureCallback(error) {
-    console.log("錯誤訊息：" + error);
-    console.log("無權限可以瀏覽網頁");
+    console.log("[Error] 錯誤訊息：", error);
+    console.log("[Error] 無權限可以瀏覽網頁");
 }
 ```
 
