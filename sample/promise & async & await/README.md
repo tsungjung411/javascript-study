@@ -152,7 +152,7 @@ var MyPromise = class {
             // 錯誤已經處理完畢，回復狀態，可以接著執行後面的 .then(...)
             this.mState = true;
             this.mError = null;
-        
+        }
         return this;
     }
 }
