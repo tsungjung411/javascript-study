@@ -17,22 +17,23 @@
 
 <br>
 
-## Promise 起源
+## [Promise 起源](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
 
 ### 共同的 Callback
 ```javascript
-function successCallback(value) {
-    console.log("Success: value:", value);
+function successCallback(result) {
+    console.log("成功: 結果:", result);
 }
 
 function failureCallback(error) {
-    console.log("Failure: error:", error);
+    console.log("失敗: 錯誤訊息:", error);
 }
 ```
 
-### 傳統作法
+### 1. 傳統作法
 ```javascript
 function doSomething(successCallback, failureCallback) {
+    // 隨機產生 true(50%) 或 false(50%)
     var trueOfFalse = parseInt(Math.floor(Math.random() * 2));
     if (trueOfFalse) {
         successCallback('Done');
@@ -47,9 +48,9 @@ doSomething(successCallback, failureCallback)
 
 執行結果：
 ```
-Success: value: Done
-Failure: error: (T＿T)
-Success: value: Done
+成功: 結果: Done
+失敗: 錯誤訊息: (T＿T)
+成功: 結果: Done
 ```
 
 ## 參考資料
