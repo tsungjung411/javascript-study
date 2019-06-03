@@ -118,7 +118,10 @@ promise.setFailureListener(failureCallback);
 基本架構：
 ```javascript
 var MyPromise = class {
-    constructor(executor) {
+    constructor(initExecutor) {
+        runExecutor(initExecutor);
+    }
+    runExecutor(executor) {
         let resolve = () => {
             this.mState = true; 
         };
@@ -130,7 +133,7 @@ var MyPromise = class {
     then(taskExecutor) {
         if (this.mState) {
             try {
-                taskExecutor();
+                this.runExecutor(taskExecutor);
             } catch (error) {
                 // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
                 this.mState = false;
