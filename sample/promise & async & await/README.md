@@ -145,11 +145,14 @@ var MyPromise = class {
         return this;
     }
     catch(errorHandler) {
-        // 處理目前的錯誤
-        errorHandler(this.mError);
-        // 錯誤已經處理完畢，回復狀態，可以接著執行後面的 .then(...)
-        this.mState = true;
-        this.mError = null;
+        // 如果沒有錯誤訊息，就不會執行
+        if (!this.mState) {
+            // 處理目前的錯誤
+            errorHandler(this.mError);
+            // 錯誤已經處理完畢，回復狀態，可以接著執行後面的 .then(...)
+            this.mState = true;
+            this.mError = null;
+        
         return this;
     }
 }
