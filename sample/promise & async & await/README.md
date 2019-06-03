@@ -21,12 +21,12 @@
 
 ### 共同的回傳呼叫函數(Callback)
 ```javascript
-// 成功後，要回傳呼叫函數(Callback)
+// 成功後要回傳呼叫的函數(Callback)，這樣才可以讓呼叫者知道狀況
 function successCallback(result) {
     console.log("成功: 結果:", result);
 }
 
-// 失敗後，要回傳呼叫函數(Callback)
+// 失敗後要回傳呼叫的函數(Callback)，這樣才可以讓呼叫者知道狀況
 function failureCallback(error) {
     console.log("失敗: 錯誤訊息:", error);
 }
