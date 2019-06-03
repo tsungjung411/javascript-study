@@ -18,6 +18,16 @@
 <br>
 
 ## Promise 起源
+
+### 共同的 Callback
+```javascript
+function successCallback(value) {
+    console.log("Success: value:", value);
+}
+
+
+```
+
 ### 傳統作法
 ```javascript
 function doSomething(successCallback, failureCallback) {
