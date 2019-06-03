@@ -102,6 +102,7 @@ promise.setFailureListener(failureCallback);
 
 個人看法：
 - ~~聽起來就像廢話~~
+- promise 並非只是當作 callback，而是用串接多個小任務
 - 跟 listener 的差別在於：
   - listenr 函數通常是無回傳值，所以無法串接
   - 而 promise 可以一直串接
