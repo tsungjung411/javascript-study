@@ -19,18 +19,21 @@
 
 ## [Promise 起源](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
 
-### 共同的 Callback
+### 共同的回傳呼叫函數(Callback)
 ```javascript
+// 成功後，要回傳呼叫函數(Callback)
 function successCallback(result) {
     console.log("成功: 結果:", result);
 }
 
+// 失敗後，要回傳呼叫函數(Callback)
 function failureCallback(error) {
     console.log("失敗: 錯誤訊息:", error);
 }
 ```
 
-### 1. 傳統作法
+### 傳統作法
+範例程式：
 ```javascript
 function doSomething(successCallback, failureCallback) {
     // 隨機產生 true(50%) 或 false(50%)
@@ -52,6 +55,27 @@ doSomething(successCallback, failureCallback)
 失敗: 錯誤訊息: (T＿T)
 成功: 結果: Done
 ```
+
+### 新的作法(Promise)
+Promise 概念：
+```javascript
+let promise = doSomething();
+promise.then(successCallback, failureCallback);
+```
+
+個人看法：這跟傳統的 listener 作法，根本沒差別啊？？(繼續看下去)
+```javascript
+let promise = doSomething();
+promise.setSuccessListener(successCallback);
+promise.setFailureListener(failureCallback);
+```
+
+> 新的作法會回傳 promise 物件, 可以在事後附加 callback
+> <br>我們稱為非同步呼叫。[出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
+
+
+
+<br>
 
 ## 參考資料
 - [[Mozilla] Promise 建構式](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
