@@ -94,14 +94,43 @@ promise.setFailureListener(failureCallback);
 <br>
 <br>
 
+## 實際模擬 Promise
+```javascript
+var MyPromise = class {
+    constructor(executor) {
+        let resolve = function() {
+            this.state = true; 
+        };
+        let reject = function() {
+            this.state = false;
+        };
+        executor(resolve, reject);
+    }
+    then(taskExecutor) {
+        taskExecutor();
+        this.state = true;
+    }
+    catch(errorHandler) {
+        this.state = false;
+    }
+}
+```
+
+
+<br>
+<br>
+
 ## Promise = 保證，是在保證什麽？
 ### 三大保證
 - callback 不會在當前的任務執行結束前呼叫
 - callback 可以透過 ```.then()``` 添加
 - 多個 callback 可以透過「重複呼叫 ```.then()```」 來達成
 
-個人看法：
-- ~~聽起來就像廢話~~
+(~~聽起來就像廢話~~)
+
+<br>
+
+### promise v.s. listener 的個人看法：
 - promise 並非只是當作 callback，而是用串接多個小任務
 - 跟 listener 的差別在於：
   - listenr 函數通常是無回傳值，所以無法串接
@@ -109,10 +138,12 @@ promise.setFailureListener(failureCallback);
 - 即便 listener 可以串接，它也只是設定 callback，並不是用來執行多個小任務
   ```
   setOnClickListener(listener) {
-      this.mOnClickListener = listener
-      return this
+      this.mOnClickListener = listenerㄤ
+      return this;
   }
   ```
+
+
   
 <br>
 <br>
