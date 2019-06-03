@@ -35,12 +35,21 @@ function failureCallback(error) {
 function doSomething(successCallback, failureCallback) {
     var trueOfFalse = parseInt(Math.floor(Math.random() * 2));
     if (trueOfFalse) {
-        successCallback();
+        successCallback('Done');
     } else {
-        failureCallback();
+        failureCallback('(T＿T)');
     }
 }
 doSomething(successCallback, failureCallback)
+doSomething(successCallback, failureCallback)
+doSomething(successCallback, failureCallback)
+```
+
+執行結果：
+```
+Success: value: Done
+Failure: error: (T＿T)
+Success: value: Done
 ```
 
 ## 參考資料
