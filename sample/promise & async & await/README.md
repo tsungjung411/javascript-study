@@ -15,7 +15,8 @@
 - https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise
   <br>Promise 物件代表一個即將完成、或失敗的非同步操作，以及它所產生的值。
 
-<br><br>
+<br>
+<br>
 
 ## [Promise 起源](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
 
@@ -64,8 +65,18 @@ Promise 概念：
 let promise = doSomething();
 promise.then(successCallback, failureCallback);
 ```
+等價於
+```javascript
+let promise = doSomething();
+promise
+.then(successCallback)
+.catch(failureCallback);
+```
 
-個人看法：這跟傳統的 listener 作法，根本沒差別啊？？(繼續看下去)
+個人看法：
+- 這跟傳統的 listener 作法，根本沒差別啊？
+- (繼續看下去)
+
 ```javascript
 let promise = doSomething();
 promise.setSuccessListener(successCallback);
@@ -80,8 +91,23 @@ promise.setFailureListener(failureCallback);
 - 「非同步函數呼叫」，會以為是「跑在其他執行緒(thread)執行」
 - 他只是在事後呼叫 callback，並非是 thread
 
+<br>
+<br>
 
-<br><br>
+## Promise = 保證，是在保證什麽？
+### 三大保證
+- callback 不會在當前的任務執行結束前呼叫
+- callback 可以透過 ```.then()``` 添加
+- 多個 callback 可以透過「重複呼叫 ```.then()```」 來達成
+
+個人看法：
+- 聽起來就像廢話
+- 跟 listener 的差別在於：
+  - listenr 函數通常是無回傳值，所以無法串接
+  - 而 promise 可以一直串接
+
+<br>
+<br>
 
 ## 參考資料
 - [[Mozilla] Promise 建構式](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
