@@ -90,7 +90,7 @@ promise.setFailureListener(failureCallback);
 
 <br>
 
-### callback v.s. thread 的個人看法：
+### async callback v.s. thread 的個人看法：
 - 上面的作法，應該叫做「非同步函數回呼」比較適當吧?
 - 因為「非同步函數呼叫」，會以為是「跑在其他執行緒(thread)上執行」
 - 而 Promise 只是在事後呼叫 callback，並非是 thread
