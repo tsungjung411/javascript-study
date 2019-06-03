@@ -33,6 +33,8 @@ function failureCallback(error) {
 }
 ```
 
+<br>
+
 ### 傳統作法
 範例程式：
 ```javascript
