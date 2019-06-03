@@ -119,7 +119,7 @@ promise.setFailureListener(failureCallback);
 ```javascript
 var MyPromise = class {
     constructor(initExecutor) {
-        runExecutor(initExecutor);
+        this.runExecutor(initExecutor);
     }
     runExecutor(executor) {
         let resolve = () => {
