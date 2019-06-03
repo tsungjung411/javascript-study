@@ -114,18 +114,21 @@ var MyPromise = class {
         if (this.mState) {
             try {
                 taskExecutor();
-            } catch (e) {
+            } catch (error) {
                 // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
                 this.mState = false;
+                // error 物件屬性：name, message / stack
+                this.mError = error;
             }
         }
         return this;
     }
     catch(errorHandler) {
-        // 處理錯誤
-        errorHandler();
-        // 錯誤已經處理，回復狀態，可以接著執行後面的 .then(...)
+        // 處理目前的錯誤
+        errorHandler(this.mError);
+        // 錯誤已經處理完畢，回復狀態，可以接著執行後面的 .then(...)
         this.mState = true;
+        this.mError = null;
         return this;
     }
 }
