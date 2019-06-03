@@ -169,24 +169,28 @@ function doSomething(successCallback, failureCallback) {
     successCallback('HTTP 200');
 }
 
-function doSomethingElse(fromResult1, successCallback, failureCallback) {
-    console.log("[Task2] fromResult1:", fromResult1);
+function doSomethingElse(params) {
+    console.log("[Task2] params:", params);
     console.log("[Task2] 頁面自動轉到：使用者登入頁面");
     console.log("[Task2] 登入檢查中...");
     
     // 隨機產生 true(50%) 或 false(50%)
     var trueOfFalse = parseInt(Math.floor(Math.random() * 2));
+    var result = {};
     if (trueOfFalse) {
-        successCallback(true); // allow to access
+        result.allowToAccess = true;
+        result.text = '登入成功';
+        return result;
     } else {
-        failureCallback('登入失敗');
+        result.allowToAccess = false;
+        result.text = '登入失敗';
+        raise Error(result);
     }
 }
 
-function doThirdThing(result2, successCallback, failureCallback) {
-    console.log("[Task2] allowToAcccess:", fromResult2);
+function doThirdThing(params) {
+    console.log("[Task3] params:", params);
     console.log("[Task3] 自動轉回原本頁面A");
-    successCallback(true);
 }
 
 function failureCallback(error) {
