@@ -61,7 +61,7 @@ doSomething(successCallback, failureCallback)
 
 <br>
 
-### callbase 的新的作法 (= Promise)
+### callback 的新的作法 (= Promise)
 Promise 概念：
 ```javascript
 let promise = doSomething();
