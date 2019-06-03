@@ -173,6 +173,7 @@ function doSomethingElse(successCallback, failureCallback) {
 
 function doThirdThing(successCallback, failureCallback) {
     console.log("自動轉回原本頁面A");
+    successCallback(true);
 }
 
 function failureCallback(error) {
@@ -189,7 +190,7 @@ doSomething( // 瀏覽 FB 某頁面A
             function (result2) {
                 doThirdThing( // 自動轉回原本頁面A
                     function (result3) {
-                        console.log("看到頁面內容了")
+                        console.log("看到頁面內容了!!")
                     }
                 )
             },
