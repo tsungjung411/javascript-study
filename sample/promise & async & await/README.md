@@ -101,11 +101,18 @@ promise.setFailureListener(failureCallback);
 - 多個 callback 可以透過「重複呼叫 ```.then()```」 來達成
 
 個人看法：
-- 聽起來就像廢話
+- ~~聽起來就像廢話~~
 - 跟 listener 的差別在於：
   - listenr 函數通常是無回傳值，所以無法串接
   - 而 promise 可以一直串接
-
+- 即便 listener 可以串接，它也只是設定 callback，並不是用來執行多個小任務
+  ```
+  setOnClickListener(listener) {
+      this.mOnClickListener = listener
+      return this
+  }
+  ```
+  
 <br>
 <br>
 
