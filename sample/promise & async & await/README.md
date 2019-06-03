@@ -25,7 +25,9 @@ function successCallback(value) {
     console.log("Success: value:", value);
 }
 
-
+function failureCallback(error) {
+    console.log("Failure: error:", error);
+}
 ```
 
 ### 傳統作法
@@ -38,6 +40,7 @@ function doSomething(successCallback, failureCallback) {
         failureCallback();
     }
 }
+doSomething(successCallback, failureCallback)
 ```
 
 ## 參考資料
