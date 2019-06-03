@@ -125,8 +125,9 @@ var MyPromise = class {
         let resolve = () => {
             this.mState = true; 
         };
-        let reject = () => {
+        let reject = (error) => {
             this.mState = false;
+            this.mError = error;
         };
         executor(resolve, reject);
     }
