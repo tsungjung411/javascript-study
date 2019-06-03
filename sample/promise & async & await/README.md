@@ -4,7 +4,7 @@
 ## 什麽是 Promise
 - Promise 是一種工具
 - Promise 是一種協助非同步的工具
-- Promise 是一種協助非同步**回呼(回傳呼叫)**的工具
+- Promise 是一種協助非同步「**回呼(回傳呼叫)**」的工具
 - Promise 是一種協助「即將完成或失敗」的非同步回呼工具
 
 - https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise
