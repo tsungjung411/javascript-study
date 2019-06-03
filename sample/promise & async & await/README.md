@@ -15,7 +15,7 @@
 - https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise
   <br>Promise 物件代表一個即將完成、或失敗的非同步操作，以及它所產生的值。
 
-<br>
+<br><br>
 
 ## [Promise 起源](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
 
@@ -56,6 +56,8 @@ doSomething(successCallback, failureCallback)
 成功: 結果: Done
 ```
 
+<br>
+
 ### 新的作法(Promise)
 Promise 概念：
 ```javascript
@@ -71,11 +73,15 @@ promise.setFailureListener(failureCallback);
 ```
 
 > 新的作法會回傳 promise 物件, 可以在事後附加 callback
-> <br>我們稱為非同步呼叫。[出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
+> <br>我們稱為「非同步函數呼叫」。([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises))
+
+個人看法：
+- 應該叫做「非同步函數回呼」比較適當吧?
+- 「非同步函數呼叫」，會以為是「跑在其他執行緒(thread)執行」
+- 他只是在事後呼叫 callback，並非是 thread
 
 
-
-<br>
+<br><br>
 
 ## 參考資料
 - [[Mozilla] Promise 建構式](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
