@@ -153,12 +153,12 @@ var MyPromise = class {
 
 ## 波動拳：傳統作法 v.s. Promise
 ```javascript
-funcion doSomething(successCallback, failureCallback) {
+function doSomething(successCallback, failureCallback) {
     console.log("瀏覽 FB 某頁面A");
     successCallback(true);
 }
 
-funcion doSomethingElse(successCallback, failureCallback) {
+function doSomethingElse(successCallback, failureCallback) {
     console.log("頁面自動轉到：使用者登入頁面");
     console.log("登入檢查中...");
     
@@ -171,7 +171,7 @@ funcion doSomethingElse(successCallback, failureCallback) {
     }
 }
 
-funcion doThirdThing(successCallback, failureCallback) {
+function doThirdThing(successCallback, failureCallback) {
     console.log("自動轉回原本頁面A");
 }
 
