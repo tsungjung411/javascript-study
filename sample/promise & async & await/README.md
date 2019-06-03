@@ -253,9 +253,15 @@ new MyPromise(doSomething)
 ### 使用「Promise」來串接任務：
 ```javascript
 new Promise(doSomething)
-    .then(doSomethingElse)
-    .then(doThirdThing)
-    .catch(failureCallback);
+    .then(function(result1) {
+        return doSomethingElse(result1)
+    })
+    .then(function(result2) {
+        return doThirdThing(result2)
+    })
+    .catch(function(error) {
+        return failureCallback(result2)
+    })
 ```
 
 <br>
