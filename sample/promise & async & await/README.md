@@ -185,7 +185,7 @@ function failureCallback(error) {
 串接任務：
 ```
 doSomething( // 瀏覽 FB 某頁面A
-    function (result1)) {
+    function (result1) {
         doSomethingElse( // 頁面自動轉到：使用者登入頁面
             function (result2) {
                 doThirdThing( // 自動轉回原本頁面A
@@ -201,6 +201,23 @@ doSomething( // 瀏覽 FB 某頁面A
 );
 ```
 
+執行結果1：
+```
+瀏覽 FB 某頁面A
+頁面自動轉到：使用者登入頁面
+登入檢查中...
+錯誤訊息：登入失敗
+無權限可以瀏覽網頁
+```
+
+執行結果2：
+```
+瀏覽 FB 某頁面A
+頁面自動轉到：使用者登入頁面
+登入檢查中...
+自動轉回原本頁面A
+看到頁面內容了!!
+```
 
 <br>
 <br>
