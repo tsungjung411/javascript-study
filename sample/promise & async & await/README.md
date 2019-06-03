@@ -159,6 +159,7 @@ var MyPromise = class {
 ```
 
 ## 波動拳：傳統作法 v.s. Promise
+### 定義好相關功能
 ```javascript
 function doSomething(successCallback, failureCallback) {
     console.log("瀏覽 FB 某頁面A");
@@ -189,8 +190,10 @@ function failureCallback(error) {
 }
 ```
 
-串接任務：
-```
+<br>
+
+### 使用「傳統作法」來串接任務：
+```javascript
 doSomething( // 瀏覽 FB 某頁面A
     function (result1) {
         doSomethingElse( // 頁面自動轉到：使用者登入頁面
@@ -224,6 +227,26 @@ doSomething( // 瀏覽 FB 某頁面A
 登入檢查中...
 自動轉回原本頁面A
 看到頁面內容了!!
+```
+
+<br>
+
+### 使用「MyPromise」來串接任務：
+```javascript
+new MyPromise(doSomething)
+    .then(doSomethingElse)
+    .then(doThirdThing)
+    .catch(failureCallback);
+```
+
+<br>
+
+### 使用「Promise」來串接任務：
+```javascript
+new Promise(doSomething)
+    .then(doSomethingElse)
+    .then(doThirdThing)
+    .catch(failureCallback);
 ```
 
 <br>
