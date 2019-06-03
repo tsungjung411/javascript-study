@@ -20,7 +20,7 @@
 
 ## [Promise 起源](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
 
-### 共同的回傳呼叫函數(Callback)
+### 先準備共同的回傳呼叫函數(Callback)
 ```javascript
 // 成功後要回傳呼叫的函數(Callback)，這樣才可以讓呼叫者知道狀況
 function successCallback(result) {
@@ -35,7 +35,7 @@ function failureCallback(error) {
 
 <br>
 
-### 傳統作法
+### callback 的傳統作法
 範例程式：
 ```javascript
 function doSomething(successCallback, failureCallback) {
@@ -61,7 +61,7 @@ doSomething(successCallback, failureCallback)
 
 <br>
 
-### 新的作法(Promise)
+### callbase 的新的作法 (= Promise)
 Promise 概念：
 ```javascript
 let promise = doSomething();
