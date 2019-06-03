@@ -158,6 +158,9 @@ var MyPromise = class {
 }
 ```
 
+<br>
+<br>
+
 ## 波動拳：傳統作法 v.s. Promise
 ### 定義好相關功能
 ```javascript
