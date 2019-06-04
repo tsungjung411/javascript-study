@@ -499,6 +499,35 @@ setTimeout(()=>{
 console.log('[main] end');
 ```
 
+執行結果：
+```
+VM3933: [main] start
+VM3930: >>> [Task 0] init task
+VM3930: <<< [Task 0] init task
+VM3933: [main] take a rest
+VM3930: >>> [Task 0] init task
+VM3930: <<< [Task 0] init task
+VM3933: [main] end
+VM3930: >>> [Task-1]
+VM3930: <<< [Task-1]
+VM3930: >>> [Task-3] 
+VM3930: <<< [Task-3] 
+VM3930: >>> [Task-2] 
+VM3930: <<< [Task-2] 
+VM3930: >>> [Task-4] 
+VM3930: <<< [Task-4] 
+VM3933: >>> [timeout-2] 0
+VM3933: <<< [timeout-2] 0
+VM3933: >>> [timeout-2] 10
+VM3933: <<< [timeout-2] 10
+VM3933: >>> [timeout-2] 100
+VM3933: <<< [timeout-2] 100
+```
+- VM3933 是 main 的執行 ID，setTimeout 是跑在此條
+- VM3930 是 Worker Thread 的執行 ID，Promise 是跑在此條
+- Promise 不會卡住 main thread
+- 執行中的每一個 task 都不會交錯，一定是完整做完，才會切到下一個
+
 <br>
 <br>
 
