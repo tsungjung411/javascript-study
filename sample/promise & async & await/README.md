@@ -119,22 +119,25 @@ promise.setFailureListener(failureCallback);
 ```javascript
 var MyPromise = class {
     constructor(initExecutor) {
-        this.runExecutor(initExecutor);
+        this.mResult = initExecutor(
+            this._resolve.bind(this), 
+            this._reject.bind(this));
     }
-    runExecutor(executor) {
-        let resolve = () => {
-            this.mState = true; 
-        };
-        let reject = (error) => {
-            this.mState = false;
-            this.mError = error;
-        };
-        executor(resolve, reject);
+    _resolve() {
+        this.mState = true; 
+    }
+    _reject() {
+        this.mState = false;
+        this.mError = error;
     }
     then(taskExecutor) {
         if (this.mState) {
             try {
-                this.runExecutor(taskExecutor);
+                const inputParams = this.mResult;
+                this.mResult = taskExecutor(
+                    inputParams, 
+                    this._resolve.bind(this), 
+                    this._reject.bind(this));
             } catch (error) {
                 // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
                 this.mState = false;
@@ -163,8 +166,10 @@ var MyPromise = class {
 
 ## 波動拳：傳統作法 v.s. Promise
 ### 定義好相關功能
+- 最初的 task 沒有 input，然後接著有選擇性的 成功/失敗 callback
+- 後面的 task 都有 input，然後接著有選擇性的 成功/失敗 callback
 ```javascript
-function doSomething(successCallback, failureCallback) {
+function doSomething(successCallback, failureCallback) { // 沒有 input
     console.log("[Task1] 瀏覽 FB 某頁面A");
     successCallback('HTTP 200');
 }
@@ -253,9 +258,16 @@ doSomething( // 瀏覽 FB 某頁面A
 ### 使用「MyPromise」來串接任務：
 ```javascript
 new MyPromise(doSomething)
-    .then(doSomethingElse)
-    .then(doThirdThing)
-    .catch(failureCallback);
+    .then(function(result0) {
+        return doSomethingElse(result0) // =result1
+    })
+    .then(function(result1) {
+        return doThirdThing(result1) // =result2
+    })
+    .catch(function(error) {
+        return failureCallback(error)
+    })
+
 ```
 
 <br>
