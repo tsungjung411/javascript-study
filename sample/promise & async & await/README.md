@@ -118,6 +118,8 @@ promise.setFailureListener(failureCallback);
 ## 實際模擬 Promise，感受一下
 
 基本架構：
+- 第一個任務（最初的任務，位於建構子）是透過「callback」來回報結果
+- 後面的任務是透過「回傳值」來回報結果
 ```javascript
 var MyPromise = class {
     constructor(initExecutor) {
