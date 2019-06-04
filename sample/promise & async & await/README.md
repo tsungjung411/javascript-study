@@ -358,6 +358,48 @@ todo();
   - 為了讓多個物件都有機會處理請求，透過職責鏈可以避免「發送者」與「接收者」之間的耦合。
   - 將這些物件連成一條鏈，沿著這條鏈傳遞該請求，並加以處理。
 - 兩者的核心，看起來是一樣的
+
+<br>
+
+### Promise 的錯誤處理流程
+- 若有錯誤，就會忽略接下來的 .then(...)，直到遇到 .catch(...)
+- 錯誤處裡完後，可以處理接下來的 .then(...)
+
+範例程式：
+```javascript
+new Promise((resolve, reject) => {
+    console.log('Init tasks');
+    resolve();
+})
+.then(() => {
+    console.log('Do task 1');
+})
+.then(() => {
+    throw new Error('Something failed');
+    console.log('Do task 2');
+})
+.then(() => {
+    console.log('Do task 3');
+})
+.catch(() => {
+    console.log('check task errors');
+})
+.then(() => {
+    console.log('Do task A');
+})
+.then(() => {
+    console.log('Do task B');
+});
+```
+
+執行結果：
+```
+Do task 1
+check task errors
+Do task A
+Do task B
+```
+
 <br>
 <br>
 
