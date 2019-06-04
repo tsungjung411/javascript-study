@@ -123,21 +123,25 @@ var MyPromise = class {
             this._resolve.bind(this), 
             this._reject.bind(this));
     }
-    _resolve() {
-        this.mState = true; 
+    _resolve(result) {
+        this.mResult = result;
+        this.mState = true;
     }
-    _reject() {
-        this.mState = false;
+    _reject(error) {
         this.mError = error;
+        this.mState = false;
     }
     then(taskExecutor) {
         if (this.mState) {
             try {
                 const inputParams = this.mResult;
-                this.mResult = taskExecutor(
+                const outputResult = taskExecutor(
                     inputParams, 
                     this._resolve.bind(this), 
                     this._reject.bind(this));
+                if (outputResult !== undefined) {
+                    this.mResult = outputResult;
+                }
             } catch (error) {
                 // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
                 this.mState = false;
