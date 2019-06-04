@@ -333,8 +333,19 @@ new Promise(doSomething)
 ### Promise v.s. 一般扁平式作法：
 ```javascript
 function todo() {
-    
+    try {
+        let result;
+        let resolve = function(params) {result = params};
+        let reject = function(result) {};
+        doSomething(resolve, reject);
+
+        result = doSomethingElse(result);
+        result = doThirdThing(result);
+    } catch (e) {
+        failureCallback(e);
+    }
 }
+todo();
 ```
 
 <br>
