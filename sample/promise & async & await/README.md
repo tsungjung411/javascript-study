@@ -405,6 +405,77 @@ Do task B
 <br>
 <br>
 
+## 兩條交錯的 Promise，執行順序如何？
+
+用來消耗 CPU 的計時器
+```javascript
+class Timer {
+    static costCpu(loop) {
+        let sum = 0;
+        for (var i of Array(loop).keys()) {
+            sum += i / i;
+        }
+    }
+
+    static evaluateLoop() {
+        if (Timer.loopPerSec !== undefined) {
+            return Timer.loopPerSec;
+        }
+
+        const LOOP_SIZE = 120 * 1000 * 1000;
+	      let startTime = Date.now();
+        Timer.costCpu(LOOP_SIZE);
+        let endTime = Date.now();
+
+        Timer.loopPerSec = LOOP_SIZE/ ((endTime - startTime) / 1000);
+        return Timer.loopPerSec;
+    }
+    
+    static wait(sec) {
+        const totalLoop = parseInt(Timer.evaluateLoop() * sec);
+        Timer.costCpu(totalLoop);
+    }
+}
+```
+
+建立數個 task
+```
+function task0(resolve, reject) {
+    console.log('[Task 0] init task');
+}
+
+function task1(params) {
+    console.log('>>> [Task 1]');
+    Timer.wait(5);
+    console.log('<<< [Task 1]');
+}
+
+function task2(resolve, reject) {
+    console.log('>>> [Task 2] ');
+    Timer.wait(5);
+    console.log('<<< [Task 2] ');
+}
+
+function task3(resolve, reject) {
+    console.log('>>> [Task 3] ');
+    Timer.wait(5);
+    console.log('<<< [Task 3] ');
+}
+
+function task4(resolve, reject) {
+    console.log('>>> [Task 4] ');
+    Timer.wait(5);
+    console.log('<<< [Task 4] ');
+}
+
+new Promise()
+
+
+```
+
+<br>
+<br>
+
 ## Promise = 保證，是在保證什麽？
 ### 三大保證
 - callback 不會在當前的任務執行結束前呼叫
