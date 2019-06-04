@@ -222,11 +222,12 @@ doSomething( // 瀏覽 FB 某頁面A
 
 執行結果1：
 ```
-瀏覽 FB 某頁面A
-頁面自動轉到：使用者登入頁面
-登入檢查中...
-錯誤訊息：登入失敗
-無權限可以瀏覽網頁
+[Task1] 瀏覽 FB 某頁面A
+[Task2] params: HTTP 200
+[Task2] 頁面自動轉到：使用者登入頁面
+[Task2] 登入檢查中...
+[Error] 錯誤訊息： {allowToAccess: false, text: "登入失敗"}
+[Error] 無權限可以瀏覽網頁
 ```
 
 執行結果2：
