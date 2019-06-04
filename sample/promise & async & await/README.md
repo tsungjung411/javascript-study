@@ -122,44 +122,39 @@ promise.setFailureListener(failureCallback);
 var MyPromise = class {
     constructor(initExecutor) {
         // 最初的任務沒有輸入值
-        initExecutor(
-            this._resolve.bind(this), 
-            this._reject.bind(this));
+        const resolve = (result) => {
+            this.mResult = result;
+            this.mState = true;
+        };
+        const reject = (reject) => {
+            this.mError = error;
+            this.mState = false;
+        };
+        initExecutor(resolve, reject);
     }
-    _resolve(result) {
-        // 回報輸出值(執行結果)
-        this.mResult = result;
-        this.mState = true;
-    }
-    _reject(error) {
-        // 回報輸出值(執行錯誤)
-        this.mError = error;
-        this.mState = false;
-    }
+
     then(taskExecutor) {
         if (this.mState) {
             try {
                 // 上一個任務的輸出值，當做下一個任務的輸入值
-                const inputParams = this.mResult;
-                taskExecutor(
-                    inputParams, 
-                    this._resolve.bind(this), 
-                    this._reject.bind(this));
-                // 這個任務的輸出值，透過 _resolve(...) 來回報
+                this.mResult = taskExecutor(this.mResult);
             } catch (error) {
                 // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
                 this.mState = false;
+                
                 // error 物件屬性：name, message, stack
                 this.mError = error;
             }
         }
         return this;
     }
+    
     catch(errorHandler) {
         // 如果沒有錯誤訊息，就不會執行
         if (!this.mState) {
             // 處理目前的錯誤
             errorHandler(this.mError);
+            
             // 錯誤已經處理完畢，回復狀態，可以接著執行後面的 .then(...)
             this.mState = true;
             this.mError = null;
