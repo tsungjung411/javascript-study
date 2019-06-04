@@ -347,6 +347,9 @@ function todo() {
 }
 todo();
 ```
+- Promise 跟一般扁平式作法，其實沒兩樣
+- 大部分程式語言都有 try-catch，好好善用 try-catch 就可以達到 promise 的效果
+- 搞了半天，還是舊玩意...
 
 <br>
 
