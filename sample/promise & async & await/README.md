@@ -231,11 +231,12 @@ doSomething( // 瀏覽 FB 某頁面A
 
 執行結果2：
 ```
-瀏覽 FB 某頁面A
-頁面自動轉到：使用者登入頁面
-登入檢查中...
-自動轉回原本頁面A
-看到頁面內容了!!
+[Task1] 瀏覽 FB 某頁面A
+[Task2] params: HTTP 200
+[Task2] 頁面自動轉到：使用者登入頁面
+[Task2] 登入檢查中...
+[Task3] params: {allowToAccess: true, text: "登入成功"}
+[Task3] 自動轉回原本頁面A
 ```
 
 <br>
