@@ -407,7 +407,7 @@ Do task B
 
 ## 兩條交錯的 Promise，執行順序如何？
 
-用來消耗 CPU 的計時器
+用來消耗 CPU 的計時器：
 ```javascript
 class Timer {
     static costCpu(loop) {
@@ -438,39 +438,51 @@ class Timer {
 }
 ```
 
-建立數個 task
-```
+建立數個 task：
+```javascript
 function task0(resolve, reject) {
     console.log('[Task 0] init task');
 }
 
 function task1(params) {
-    console.log('>>> [Task 1]');
+    console.log('>>> [Task-1]');
     Timer.wait(5);
-    console.log('<<< [Task 1]');
+    console.log('<<< [Task-1]');
 }
 
 function task2(resolve, reject) {
-    console.log('>>> [Task 2] ');
+    console.log('>>> [Task-2] ');
     Timer.wait(5);
-    console.log('<<< [Task 2] ');
+    console.log('<<< [Task-2] ');
 }
 
 function task3(resolve, reject) {
-    console.log('>>> [Task 3] ');
+    console.log('>>> [Task-3] ');
     Timer.wait(5);
-    console.log('<<< [Task 3] ');
+    console.log('<<< [Task-3] ');
 }
 
 function task4(resolve, reject) {
-    console.log('>>> [Task 4] ');
+    console.log('>>> [Task-4] ');
     Timer.wait(5);
-    console.log('<<< [Task 4] ');
+    console.log('<<< [Task-4] ');
 }
+```
 
-new Promise()
+建立兩條 Promise，並執行
+```javascript
+console.log('[main] start');
+setTimer(()=>{Timer.wait(5);}, 1);
 
+new Promise(task0).then(task1).then(task2);
 
+console.log('[main] take a rest');
+setTimer(()=>{Timer.wait(5);}, 10);
+
+new Promise(task0).then(task3).then(task4);
+
+setTimer(()=>{Timer.wait(5);}, 100);
+console.log('[main] end');
 ```
 
 <br>
