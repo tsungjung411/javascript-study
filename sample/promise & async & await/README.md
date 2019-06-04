@@ -330,7 +330,7 @@ new Promise(doSomething)
 
 <br>
 
-### Promise v.s. 一般扁平式作法：
+### Promise v.s. 一般扁平式作法 的個人看法：
 ```javascript
 function todo() {
     try {
@@ -361,8 +361,9 @@ todo();
 - 兩者的核心，看起來是一樣的
 
 <br>
+<br>
 
-### Promise 的錯誤處理流程
+## Promise 的錯誤處理流程
 - 若有錯誤，就會忽略接下來的 .then(...)，直到遇到 .catch(...)
 - 錯誤處裡完後，可以處理接下來的 .then(...)
 
