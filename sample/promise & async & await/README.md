@@ -47,6 +47,8 @@ function doSomething(successCallback, failureCallback) {
         failureCallback('(T＿T)');
     }
 }
+
+// 呼叫三次
 doSomething(successCallback, failureCallback)
 doSomething(successCallback, failureCallback)
 doSomething(successCallback, failureCallback)
