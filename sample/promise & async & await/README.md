@@ -184,7 +184,7 @@ function doSomethingElse(params) {
     } else {
         result.allowToAccess = false;
         result.text = '登入失敗';
-        throw Error(result);
+        throw result;
     }
 }
 
