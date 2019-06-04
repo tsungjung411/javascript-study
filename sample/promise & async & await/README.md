@@ -172,8 +172,8 @@ var MyPromise = class {
 ## 波動拳：傳統作法 v.s. MyPromise v.s. Promise
 
 ### 何謂波動拳
-- Pyramid of Doom: 波動拳
-- 連續執行多個相依任務，形成很深的巢狀結構
+- Pyramid of Doom: 金字塔的厄運（中文用「波動拳」來形容）
+- 連續執行多個相依任務，形成很深的巢狀結構，導致程式碼縮排太多
   <br>![](https://pbs.twimg.com/media/COYihdoWgAE9q3Y.jpg)
   <br>(圖片來源：https://twitter.com/piscis168/status/641237956070666240)
 
