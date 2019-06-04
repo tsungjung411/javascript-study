@@ -170,6 +170,13 @@ var MyPromise = class {
 <br>
 
 ## 波動拳：傳統作法 v.s. MyPromise v.s. Promise
+
+### 何謂波動拳
+- Pyramid of Doom: 波動拳
+- 連續執行多個相依任務，形成很深的巢狀結構
+  <br>![](https://pbs.twimg.com/media/COYihdoWgAE9q3Y.jpg)
+  <br>(圖片來源：https://twitter.com/piscis168/status/641237956070666240)
+
 ### 定義好要做的任務
 - 最初的 task 沒有 input，然後接著有選擇性的 成功/失敗 callback
 - 後面的 task 都有 input (上一個 task 的 output)，然後接著有選擇性的 成功/失敗 callback
