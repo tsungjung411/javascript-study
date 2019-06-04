@@ -169,26 +169,34 @@ function doSomething(successCallback, failureCallback) {
     successCallback('HTTP 200');
 }
 
-function doSomethingElse(params) {
+function doSomethingElse(params, successCallback, failureCallback) {
     console.log("[Task2] params:", params);
     console.log("[Task2] 頁面自動轉到：使用者登入頁面");
     console.log("[Task2] 登入檢查中...");
     
     // 隨機產生 true(50%) 或 false(50%)
     var trueOfFalse = parseInt(Math.floor(Math.random() * 2));
-    var result = {};
+    var result = {
+        allowToAccess: trueOfFalse
+    };
+    
     if (trueOfFalse) {
-        result.allowToAccess = true;
         result.text = '登入成功';
-        return result;
+        if (successCallback) {
+            successCallback(result);
+        }
     } else {
-        result.allowToAccess = false;
         result.text = '登入失敗';
-        throw result;
+        if (failureCallback) {
+            failureCallback(result);
+        } else {
+            throw result;
+        }
     }
+    return result;
 }
 
-function doThirdThing(params) {
+function doThirdThing(params, successCallback, failureCallback) {
     console.log("[Task3] params:", params);
     console.log("[Task3] 自動轉回原本頁面A");
 }
