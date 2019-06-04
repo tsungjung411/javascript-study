@@ -474,16 +474,28 @@ function task4(resolve, reject) {
 建立兩條 Promise，並執行
 ```javascript
 console.log('[main] start');
-setTimeout(()=>{Timer.wait(5);}, 1);
+setTimeout(()=>{
+    console.log('>>> [timeout-2] 0');
+    Timer.wait(5);
+    console.log('<<< [timeout-2] 0');
+}, 0);
 
 new Promise(task0).then(task1).then(task2);
 
 console.log('[main] take a rest');
-setTimeout(()=>{Timer.wait(5);}, 10);
+setTimeout(()=>{
+    console.log('>>> [timeout-2] 100');
+    Timer.wait(5);
+    console.log('<<< [timeout-2] 100');
+}, 100);
 
 new Promise(task0).then(task3).then(task4);
 
-setTimeout(()=>{Timer.wait(5);}, 100);
+setTimeout(()=>{
+    console.log('>>> [timeout-2] 10');
+    Timer.wait(5);
+    console.log('<<< [timeout-2] 10');
+}, 10);
 console.log('[main] end');
 ```
 
