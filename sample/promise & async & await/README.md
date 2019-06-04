@@ -313,7 +313,7 @@ new Promise(doSomething)
 （又稱為 Promise 鏈）
 <br>
 <br>程式碼可在簡化為：
-```
+```javascript
 new Promise(doSomething)
     .then(doSomethingElse)
     .then(doThirdThing)
