@@ -141,7 +141,7 @@ var MyPromise = class {
             } catch (error) {
                 // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
                 this.mState = false;
-                // error 物件屬性：name, message / stack
+                // error 物件屬性：name, message, stack
                 this.mError = error;
             }
         }
