@@ -174,10 +174,18 @@ var MyPromise = class {
 ### 何謂波動拳
 - Pyramid of Doom: 金字塔的厄運（中文用「波動拳」來形容）
 - 連續執行多個相依任務，形成很深的巢狀結構，導致程式碼縮排太多
+  - 如果 user_name 不為空
+  - 如果 user_password_new 不為空
+  - 如果 user_password_new === user_password_repeat (輸入兩次要一樣)
+  - 如果 user_password_new > 5 (密碼程度至少要 6 位以上)
+  - 如果 1 < user_name < 65 (使用者名稱符合長度規則)
+  - ...
   <br>![](https://pbs.twimg.com/media/COYihdoWgAE9q3Y.jpg)
   <br>(圖片來源：https://twitter.com/piscis168/status/641237956070666240)
   <br>![](http://polyglot.ninja/wp-content/uploads/2017/08/pyramid.png)
   <br>(圖片來源：http://polyglot.ninja/promises-in-javascript/pyramid/)
+
+<br>
 
 ### 定義好要做的任務
 - 最初的 task 沒有 input，然後接著有選擇性的 成功/失敗 callback
