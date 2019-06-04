@@ -310,7 +310,7 @@ new Promise(doSomething)
         return failureCallback(error)
     })
 ```
-
+（又稱為 Promise 鏈）
 <br>
 <br>
 
