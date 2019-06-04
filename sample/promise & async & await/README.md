@@ -168,10 +168,13 @@ var MyPromise = class {
 <br>
 <br>
 
-## 波動拳：傳統作法 v.s. Promise
-### 定義好相關功能
+## 波動拳：傳統作法 v.s. MyPromise v.s. Promise
+### 定義好要做的任務
 - 最初的 task 沒有 input，然後接著有選擇性的 成功/失敗 callback
-- 後面的 task 都有 input，然後接著有選擇性的 成功/失敗 callback
+- 後面的 task 都有 input (上一個 task 的 output)，然後接著有選擇性的 成功/失敗 callback
+- callback 敘述是回報給傳統方法
+- return 敘述是回報給 Promise
+
 ```javascript
 function doSomething(successCallback, failureCallback) { // 沒有 input
     console.log("[Task1] 瀏覽 FB 某頁面A");
