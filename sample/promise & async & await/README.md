@@ -315,6 +315,14 @@ new Promise(doSomething)
 <br>程式碼可在簡化為：
 ```javascript
 new Promise(doSomething)
+    .then(result0 => doSomethingElse(result0))
+    .then(result1 => doThirdThing(result1))
+    .catch(error => failureCallback(error))
+```
+
+或是更精簡：
+```javascript
+new Promise(doSomething)
     .then(doSomethingElse)
     .then(doThirdThing)
     .catch(failureCallback)
