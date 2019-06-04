@@ -187,7 +187,7 @@ var MyPromise = class {
 
 <br>
 
-### 定義好要做的任務
+### 範例展示，首先定義好要做的任務
 - 最初的 task 沒有 input，然後接著有選擇性的 成功/失敗 callback
 - 後面的 task 都有 input (上一個 task 的 output)，然後接著有選擇性的 成功/失敗 callback
 - callback 敘述是回報給傳統方法
@@ -320,13 +320,30 @@ new Promise(doSomething)
     .catch(error => failureCallback(error))
 ```
 
-或是更精簡：
+或是更精簡成：
 ```javascript
 new Promise(doSomething)
     .then(doSomethingElse)
     .then(doThirdThing)
     .catch(failureCallback)
 ```
+
+<br>
+
+### Promise v.s. 一般扁平式作法：
+```javascript
+function todo() {
+    
+}
+```
+
+<br>
+
+### Promise v.s. 職責鏈 的個人看法：
+- 職責鏈模式(Chain of responsiblity)：
+  - 為了讓多個物件都有機會處理請求，透過職責鏈可以避免「發送者」與「接收者」之間的耦合。
+  - 將這些物件連成一條鏈，沿著這條鏈傳遞該請求，並加以處理。
+- 兩者的核心，看起來是一樣的
 <br>
 <br>
 
