@@ -492,9 +492,9 @@ setTimeout(()=>{
 new Promise(task0).then(task3).then(task4);
 
 setTimeout(()=>{
-    console.log('>>> [timeout-2] 10');
+    console.log('>>> [timeout-3] 10');
     Timer.wait(5);
-    console.log('<<< [timeout-2] 10');
+    console.log('<<< [timeout-3] 10');
 }, 10);
 console.log('[main] end');
 ```
@@ -516,16 +516,17 @@ VM3930: >>> [Task-2]
 VM3930: <<< [Task-2] 
 VM3930: >>> [Task-4] 
 VM3930: <<< [Task-4] 
-VM3933: >>> [timeout-2] 0
-VM3933: <<< [timeout-2] 0
-VM3933: >>> [timeout-2] 10
-VM3933: <<< [timeout-2] 10
+VM3933: >>> [timeout-1] 0
+VM3933: <<< [timeout-1] 0
+VM3933: >>> [timeout-3] 10
+VM3933: <<< [timeout-3] 10
 VM3933: >>> [timeout-2] 100
 VM3933: <<< [timeout-2] 100
 ```
 - VM3933 是 main 的執行 ID，setTimeout 是跑在此條
 - VM3930 是 Worker Thread 的執行 ID，Promise 是跑在此條
 - Promise 不會卡住 main thread
+- 尚未執行到的 Promise then(...) 區塊是先放到 queue 中，還沒丟到 worker thread 中，所以產生 task 1,3,2,4 交錯
 - 執行中的每一個 task 都不會交錯，一定是完整做完，才會切到下一個
 
 <br>
