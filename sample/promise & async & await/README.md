@@ -121,29 +121,31 @@ promise.setFailureListener(failureCallback);
 ```javascript
 var MyPromise = class {
     constructor(initExecutor) {
-        this.mResult = initExecutor(
+        // 最初的任務沒有輸入值
+        initExecutor(
             this._resolve.bind(this), 
             this._reject.bind(this));
     }
     _resolve(result) {
+        // 回報輸出值(執行結果)
         this.mResult = result;
         this.mState = true;
     }
     _reject(error) {
+        // 回報輸出值(執行錯誤)
         this.mError = error;
         this.mState = false;
     }
     then(taskExecutor) {
         if (this.mState) {
             try {
+                // 上一個任務的輸出值，當做下一個任務的輸入值
                 const inputParams = this.mResult;
-                const outputResult = taskExecutor(
+                taskExecutor(
                     inputParams, 
                     this._resolve.bind(this), 
                     this._reject.bind(this));
-                if (outputResult !== undefined) {
-                    this.mResult = outputResult;
-                }
+                // 這個任務的輸出值，透過 _resolve(...) 來回報
             } catch (error) {
                 // 跳過後面接續的 .then(...)，直到遇到 .catch(...)
                 this.mState = false;
