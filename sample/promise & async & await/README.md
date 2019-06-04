@@ -441,7 +441,9 @@ class Timer {
 建立數個 task：
 ```javascript
 function task0(resolve, reject) {
-    console.log('[Task 0] init task');
+    console.log('>>> [Task 0] init task');
+    resolve();
+    console.log('<<< [Task 0] init task');
 }
 
 function task1(params) {
@@ -472,16 +474,16 @@ function task4(resolve, reject) {
 建立兩條 Promise，並執行
 ```javascript
 console.log('[main] start');
-setTimer(()=>{Timer.wait(5);}, 1);
+setTimeout(()=>{Timer.wait(5);}, 1);
 
 new Promise(task0).then(task1).then(task2);
 
 console.log('[main] take a rest');
-setTimer(()=>{Timer.wait(5);}, 10);
+setTimeout(()=>{Timer.wait(5);}, 10);
 
 new Promise(task0).then(task3).then(task4);
 
-setTimer(()=>{Timer.wait(5);}, 100);
+setTimeout(()=>{Timer.wait(5);}, 100);
 console.log('[main] end');
 ```
 
