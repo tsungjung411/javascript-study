@@ -473,9 +473,14 @@ function task4(resolve, reject) {
 ```
 
 <br>
+底下進行實驗比較：
+- 方法一：建立兩條 Promise，並執行
+- 方法二：建立兩條 MyPromise，並執行
+- 方法三：使用一般常見的扁平式設計，並執行
+<br>
 
 ### 方法一：建立兩條 Promise，並執行
-此為實驗組，先看看 Promise 所產生的結果
+先看看原生的 Promise 所產生的結果：
 ```javascript
 console.log('[main] start');
 setTimeout(()=>{
@@ -541,9 +546,10 @@ console.log('[main] end');
   - setTimeout task 優先權最低
   
 <br>
+<br>
 
 ### 方法二：建立兩條 MyPromise，並執行
-此為對照組，程式碼都跟上面一樣，使用假的 MyPromise 來執行
+對照 promise 組(方法一)，程式碼都跟上面一樣，但使用假的 MyPromise 來執行：
 
 ```javascript
 console.log('[main] start');
@@ -601,6 +607,59 @@ console.log('[main] end');
 
 <br>
 
+### 方法三：使用一般常見的扁平式設計，並執行
+與方法二相當
+```javascript
+console.log('[main] start');
+setTimeout(()=>{
+    console.log('>>> [timeout-1] 0');
+    Timer.wait(5);
+    console.log('<<< [timeout-1] 0');
+}, 0);
+
+function myPromise1() {
+    try {
+        task0(
+	    () => {}, // resolve
+	    () => {}  // reject
+	);
+	task1();
+	task2();
+    } catch (e) {
+    }
+}
+myPromise1();
+
+console.log('[main] take a rest');
+setTimeout(()=>{
+    console.log('>>> [timeout-2] 100');
+    Timer.wait(5);
+    console.log('<<< [timeout-2] 100');
+}, 100);
+
+function myPromise2() {
+    try {
+        task0(
+	    () => {}, // resolve
+	    () => {}  // reject
+	);
+	task1();
+	task2();
+    } catch (e) {
+    }
+}
+myPromise2();
+
+setTimeout(()=>{
+    console.log('>>> [timeout-3] 10');
+    Timer.wait(5);
+    console.log('<<< [timeout-3] 10');
+}, 10);
+console.log('[main] end');
+```
+
+執行結果：
+結果完全同**方法二（使用 MyPromise）**
 
 <br>
 <br>
