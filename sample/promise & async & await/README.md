@@ -472,7 +472,10 @@ function task4(resolve, reject) {
 }
 ```
 
-建立兩條 Promise，並執行
+<br>
+
+### 方法一：建立兩條 Promise，並執行
+此為實驗組，先看看 Promise 所產生的結果
 ```javascript
 console.log('[main] start');
 setTimeout(()=>{
@@ -524,9 +527,80 @@ console.log('[main] end');
 >>> [timeout-2] 100
 <<< [timeout-2] 100
 ```
-- Promise 不會卡住 main thread
+- Promise 「不會」卡住 main thread
 - 尚未執行到的 then(...) 區塊是先放到 queue 中，還沒丟到 worker thread 中，所以產生 task 1,3,2,4 交錯
-- 執行中的每一個 task 都不會交錯，一定是完整做完每一個 task，才會切到下一個 
+- 執行中的每一個 task 都不會交錯，一定是完整地做完每一個 task，才會切到下一個 
+
+<br>
+真實世界：
+- 表面上，看起來 Promise 不會卡住 main thread
+- 但實際上，仍會卡住 main thread
+- javascript 只是單一執行緒，只是透過優先權(priority)高低來模擬多執行緒
+  - UI task 優先權最高
+  - promise task 優先權其次
+  - setTimeout task 優先權最低
+  
+<br>
+
+### 方法二：建立兩條 MyPromise，並執行
+此為對照組，程式碼都跟上面一樣，使用假的 MyPromise 來執行
+
+```javascript
+console.log('[main] start');
+setTimeout(()=>{
+    console.log('>>> [timeout-1] 0');
+    Timer.wait(5);
+    console.log('<<< [timeout-1] 0');
+}, 0);
+
+new MyPromise(task0).then(task1).then(task2);
+
+console.log('[main] take a rest');
+setTimeout(()=>{
+    console.log('>>> [timeout-2] 100');
+    Timer.wait(5);
+    console.log('<<< [timeout-2] 100');
+}, 100);
+
+new MyPromise(task0).then(task3).then(task4);
+
+setTimeout(()=>{
+    console.log('>>> [timeout-3] 10');
+    Timer.wait(5);
+    console.log('<<< [timeout-3] 10');
+}, 10);
+console.log('[main] end');
+```
+
+執行結果：
+```
+[main] start
+>>> [Task 0] init task
+<<< [Task 0] init task
+>>> [Task-1]
+<<< [Task-1]
+>>> [Task-2] 
+<<< [Task-2] 
+[main] take a rest
+>>> [Task 0] init task
+<<< [Task 0] init task
+>>> [Task-3] 
+<<< [Task-3] 
+>>> [Task-4] 
+<<< [Task-4] 
+[main] end
+>>> [timeout-1] 0
+<<< [timeout-1] 0
+>>> [timeout-2] 100
+<<< [timeout-2] 100
+>>> [timeout-3] 10
+<<< [timeout-3] 10
+```
+- Promise 「會」卡住 main thread
+- 除了 setTimeout，整個過程都是依序執行
+
+<br>
+
 
 <br>
 <br>
