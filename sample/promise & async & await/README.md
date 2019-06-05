@@ -552,6 +552,7 @@ console.log('[main] end');
 <br>
 
 ![](https://cdn.rawgit.com/Vectaio/a76330b025baf9bcdf07cb46e5a9ef9e/raw/26c4213a93dee1c39611dcd0ec12625811b20a26/js-promise.svg)
+(圖片來源：https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 <br>
 <br>
@@ -726,6 +727,42 @@ console.log('[main] end');
 結果完全同**方法一（使用 Promise）**
 
 
+## （接續上面）Promise 語法糖
+以下兩種用法，結果會是如何？（注意 await 關鍵字）
+
+### 第一種用法：
+```
+async function myPromise1() {
+    try {
+        await task0(
+            () => {}, // resolve
+            () => {}  // reject
+        );
+        await task1();
+        await task2();
+    } catch (e) {
+    }
+}
+myPromise1();
+```
+
+### 第二種用法：
+```
+async function myPromise1() {
+    try {
+        task0(        // no await
+            () => {}, // resolve
+            () => {}  // reject
+        );
+        await task2();
+        await task3();
+    } catch (e) {
+    }
+}
+myPromise1();
+```
+
+將上面兩種方法，再套入上一小節的「方法四」，並觀察結果：
 
 <br>
 <br>
