@@ -645,8 +645,8 @@ function myPromise2() {
 	    () => {}, // resolve
 	    () => {}  // reject
 	);
-	task1();
-	task2();
+	task3();
+	task4();
     } catch (e) {
     }
 }
@@ -662,6 +662,64 @@ console.log('[main] end');
 
 執行結果：
 結果完全同**方法二（使用 MyPromise）**
+
+<br>
+
+### 方法四：使用一般常見的扁平式設計，然後套用 Promise 語法糖，並執行
+與方法一相當
+```javascript
+console.log('[main] start');
+setTimeout(()=>{
+    console.log('>>> [timeout-1] 0');
+    Timer.wait(5);
+    console.log('<<< [timeout-1] 0');
+}, 0);
+
+async function myPromise1() {
+    try {
+        task0(
+	    () => {}, // resolve
+	    () => {}  // reject
+	);
+	await task1();
+	await task2();
+    } catch (e) {
+    }
+}
+myPromise1();
+
+console.log('[main] take a rest');
+setTimeout(()=>{
+    console.log('>>> [timeout-2] 100');
+    Timer.wait(5);
+    console.log('<<< [timeout-2] 100');
+}, 100);
+
+async function myPromise2() {
+    try {
+        task0(
+	    () => {}, // resolve
+	    () => {}  // reject
+	);
+	await task3();
+	await task4();
+    } catch (e) {
+    }
+}
+myPromise2();
+
+setTimeout(()=>{
+    console.log('>>> [timeout-3] 10');
+    Timer.wait(5);
+    console.log('<<< [timeout-3] 10');
+}, 10);
+console.log('[main] end');
+```
+
+執行結果：
+結果完全同**方法一（使用 Promise）**
+
+
 
 <br>
 <br>
