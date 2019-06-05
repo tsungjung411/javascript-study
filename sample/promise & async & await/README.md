@@ -730,7 +730,7 @@ console.log('[main] end');
 ## （接續上面）Promise 語法糖
 以下兩種用法，結果會是如何？（注意 await 關鍵字）
 
-### 第一種用法：
+### 用法 A：
 ```
 async function myPromise1() {
     try {
@@ -746,11 +746,11 @@ async function myPromise1() {
 myPromise1();
 ```
 
-### 第二種用法：
+### 用法 B：
 ```
 async function myPromise1() {
     try {
-        task0(        // no await
+        task0(        // <--- 要變更的地方，只有這裡，沒有 await
             () => {}, // resolve
             () => {}  // reject
         );
@@ -762,7 +762,7 @@ async function myPromise1() {
 myPromise1();
 ```
 
-將上面兩種方法，再套入上一小節的「方法四」，並觀察結果：
+將上面兩種用法A/B，再套入上一小節的「方法四」，並觀察結果：
 
 <br>
 <br>
