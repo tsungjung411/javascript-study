@@ -475,9 +475,9 @@ function task4(resolve, reject) {
 ```javascript
 console.log('[main] start');
 setTimeout(()=>{
-    console.log('>>> [timeout-2] 0');
+    console.log('>>> [timeout-1] 0');
     Timer.wait(5);
-    console.log('<<< [timeout-2] 0');
+    console.log('<<< [timeout-1] 0');
 }, 0);
 
 new Promise(task0).then(task1).then(task2);
@@ -501,33 +501,31 @@ console.log('[main] end');
 
 執行結果：
 ```
-VM3933: [main] start
-VM3930: >>> [Task 0] init task
-VM3930: <<< [Task 0] init task
-VM3933: [main] take a rest
-VM3930: >>> [Task 0] init task
-VM3930: <<< [Task 0] init task
-VM3933: [main] end
-VM3930: >>> [Task-1]
-VM3930: <<< [Task-1]
-VM3930: >>> [Task-3] 
-VM3930: <<< [Task-3] 
-VM3930: >>> [Task-2] 
-VM3930: <<< [Task-2] 
-VM3930: >>> [Task-4] 
-VM3930: <<< [Task-4] 
-VM3933: >>> [timeout-1] 0
-VM3933: <<< [timeout-1] 0
-VM3933: >>> [timeout-3] 10
-VM3933: <<< [timeout-3] 10
-VM3933: >>> [timeout-2] 100
-VM3933: <<< [timeout-2] 100
+[main] start
+>>> [Task 0] init task
+<<< [Task 0] init task
+[main] take a rest
+>>> [Task 0] init task
+<<< [Task 0] init task
+[main] end
+>>> [Task-1]
+<<< [Task-1]
+>>> [Task-3]
+<<< [Task-3]
+>>> [Task-2]
+<<< [Task-2]
+>>> [Task-4]
+<<< [Task-4]
+>>> [timeout-1] 0
+<<< [timeout-1] 0
+>>> [timeout-3] 10
+<<< [timeout-3] 10
+>>> [timeout-2] 100
+<<< [timeout-2] 100
 ```
-- VM3933 是 main 的執行 ID，setTimeout 是跑在此條
-- VM3930 是 Worker Thread 的執行 ID，Promise 是跑在此條
 - Promise 不會卡住 main thread
-- 尚未執行到的 Promise then(...) 區塊是先放到 queue 中，還沒丟到 worker thread 中，所以產生 task 1,3,2,4 交錯
-- 執行中的每一個 task 都不會交錯，一定是完整做完，才會切到下一個
+- 尚未執行到的 then(...) 區塊是先放到 queue 中，還沒丟到 worker thread 中，所以產生 task 1,3,2,4 交錯
+- 執行中的每一個 task 都不會交錯，一定是完整做完每一個 task，才會切到下一個 
 
 <br>
 <br>
