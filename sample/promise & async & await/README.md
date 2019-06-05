@@ -539,6 +539,7 @@ console.log('[main] end');
 - 執行中的每一個 task 都不會交錯，一定是完整地做完每一個 task，才會切到下一個 
 
 <br>
+
 真實世界：
 - 表面上，看起來 Promise 不會卡住 main thread
 - 但實際上，仍會卡住 main thread
