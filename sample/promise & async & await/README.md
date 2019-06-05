@@ -410,6 +410,7 @@ Do task B
 用來消耗 CPU 的計時器：
 ```javascript
 class Timer {
+    // 執行過程 CPU 會達到 100%
     static costCpu(loop) {
         let sum = 0;
         for (var i of Array(loop).keys()) {
