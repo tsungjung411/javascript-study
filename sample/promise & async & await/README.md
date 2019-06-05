@@ -546,7 +546,11 @@ console.log('[main] end');
   - UI task 優先權最高
   - promise task 優先權其次
   - setTimeout task 優先權最低
-  
+
+<br>
+
+![](https://cdn.rawgit.com/Vectaio/a76330b025baf9bcdf07cb46e5a9ef9e/raw/26c4213a93dee1c39611dcd0ec12625811b20a26/js-promise.svg)
+
 <br>
 <br>
 
@@ -624,9 +628,9 @@ function myPromise1() {
         task0(
             () => {}, // resolve
             () => {}  // reject
-	);
-	task1();
-	task2();
+        );
+        task1();
+        task2();
     } catch (e) {
     }
 }
@@ -644,9 +648,9 @@ function myPromise2() {
         task0(
             () => {}, // resolve
             () => {}  // reject
-	);
-	task3();
-	task4();
+        );
+        task3();
+        task4();
     } catch (e) {
     }
 }
@@ -681,8 +685,8 @@ async function myPromise1() {
             () => {}, // resolve
             () => {}  // reject
         );
-	await task1();
-	await task2();
+        await task1();
+        await task2();
     } catch (e) {
     }
 }
@@ -701,8 +705,8 @@ async function myPromise2() {
             () => {}, // resolve
             () => {}  // reject
         );
-	await task3();
-	await task4();
+        await task3();
+        await task4();
     } catch (e) {
     }
 }
