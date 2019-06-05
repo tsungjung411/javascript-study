@@ -622,8 +622,8 @@ setTimeout(()=>{
 function myPromise1() {
     try {
         task0(
-	    () => {}, // resolve
-	    () => {}  // reject
+            () => {}, // resolve
+            () => {}  // reject
 	);
 	task1();
 	task2();
@@ -642,8 +642,8 @@ setTimeout(()=>{
 function myPromise2() {
     try {
         task0(
-	    () => {}, // resolve
-	    () => {}  // reject
+            () => {}, // resolve
+            () => {}  // reject
 	);
 	task3();
 	task4();
@@ -677,10 +677,10 @@ setTimeout(()=>{
 
 async function myPromise1() {
     try {
-        task0(
-	    () => {}, // resolve
-	    () => {}  // reject
-	);
+        await task0(
+            () => {}, // resolve
+            () => {}  // reject
+        );
 	await task1();
 	await task2();
     } catch (e) {
@@ -697,10 +697,10 @@ setTimeout(()=>{
 
 async function myPromise2() {
     try {
-        task0(
-	    () => {}, // resolve
-	    () => {}  // reject
-	);
+        await task0(
+            () => {}, // resolve
+            () => {}  // reject
+        );
 	await task3();
 	await task4();
     } catch (e) {
