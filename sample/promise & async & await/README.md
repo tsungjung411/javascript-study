@@ -478,6 +478,7 @@ function task4(resolve, reject) {
 - 方法一：建立兩條 Promise，並執行
 - 方法二：建立兩條 MyPromise，並執行
 - 方法三：使用一般常見的扁平式設計，並執行
+- 方法四：使用一般常見的扁平式設計，然後套用 Promise 語法糖，並執行
 
 <br>
 
