@@ -473,10 +473,12 @@ function task4(resolve, reject) {
 ```
 
 <br>
+
 底下進行實驗比較：
 - 方法一：建立兩條 Promise，並執行
 - 方法二：建立兩條 MyPromise，並執行
 - 方法三：使用一般常見的扁平式設計，並執行
+
 <br>
 
 ### 方法一：建立兩條 Promise，並執行
