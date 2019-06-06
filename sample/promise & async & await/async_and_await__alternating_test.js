@@ -1,6 +1,7 @@
 
 // 用來消耗 CPU 的計時器
-class Timer {
+var Timer = class {  // 等效於 class Timer {
+	
     // 執行過程 CPU 會達到 100%
     static costCpu(loop) {
         let sum = 0;
