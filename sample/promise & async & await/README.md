@@ -5,7 +5,7 @@
 
 ## 大綱
 - [什麽是 Promise](#什麽是 Promise)
-- [Promise 起源]()
+- [Promise 起源](#promise-起源)
 - [實際模擬 Promise，感受一下]()
 - [波動拳：傳統作法 v.s. MyPromise v.s. Promise]
 - [兩條交錯的 Promise，執行順序如何？]
