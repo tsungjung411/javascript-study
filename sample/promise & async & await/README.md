@@ -907,10 +907,9 @@ try {
 ```
 
 執行結果：
-```
-Uncaught HTTP 408 Request Timeout
-```
-無法捕捉例外/錯誤...
+執行發生錯誤：
+<br><b style="color: red;">Uncaught HTTP 408 Request Timeout</b>
+<br>無法捕捉例外/錯誤...
 
 怎麽辦？使用 Promise 
 
