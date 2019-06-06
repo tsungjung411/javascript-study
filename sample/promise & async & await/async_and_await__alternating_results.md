@@ -58,7 +58,7 @@ async function myPromise1() {
 myPromise1(); // 執行 promise 鏈
 ```
 
-```
+```javascript
 new Promise((resolve, reject) => {
     try {
         task0(
