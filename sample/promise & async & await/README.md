@@ -3,6 +3,16 @@
 
 <br>
 
+## 大綱
+- [什麽是 Promise](#什麽是 Promise)
+- [Promise 起源]()
+- [實際模擬 Promise，感受一下]()
+- [波動拳：傳統作法 v.s. MyPromise v.s. Promise]
+- [兩條交錯的 Promise，執行順序如何？]
+- [Promise 語法糖：async/await]
+
+<br>
+
 ## 什麽是 Promise
 - Promise 是一種工具
 - Promise 是一種協助非同步的工具
@@ -730,7 +740,7 @@ console.log('[main] end');
 <br>
 <br>
 
-## （接續上面）Promise 語法糖
+## （接續上面）Promise 語法糖：async/await
 以下兩種用法，結果會是如何？（注意 await 關鍵字）
 
 ### 用法 A：
