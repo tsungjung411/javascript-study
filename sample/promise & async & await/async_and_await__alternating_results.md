@@ -58,11 +58,16 @@ myPromise1(); // 執行 promise 鏈
 
 ```
 new Promise((resolve, reject) => {
-    task0(
-        () => {}, // resolve
-        () => {}  // reject
-    );
-    task1();
+    try {
+        task0(
+            () => {}, // resolve
+            () => {}  // reject
+        );
+        task1();
+        resolve();
+    } catch (e) {
+        reject();
+    }
 })
 .then(() => {
     task2();
@@ -72,7 +77,8 @@ new Promise((resolve, reject) => {
     task4();
 })
 
-
 ```
 
-### 第一個 async 是放在 Promise() 建構子的 executor 區塊
+- await 區塊範圍，是從最初或是上一個 await 的下一行開始，直到遇到 await 那一行
+- 第一個 await 是放在 Promise() 建構子的 executor 區塊
+- 第二個 await 和之後的 await 是放在 .then() 區塊
