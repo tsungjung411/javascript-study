@@ -11,7 +11,7 @@
 - [Promise 的錯誤處理流程](#promise-的錯誤處理流程)
 - [兩條交錯的 Promise，執行順序如何？](#兩條交錯的-promise執行順序如何)
 - [Promise 語法糖：async/await](#接續上面promise-語法糖asyncawait)
-- [[回顧] Promise = 保證，是在保證什麽？](promise--保證是在保證什麽)
+- [[回顧] Promise = 保證，是在保證什麽？](#回顧-promise--保證是在保證什麽)
 
 <br>
 <hr>
@@ -748,7 +748,7 @@ console.log('[main] end');
 以下兩種用法，結果會是如何？（注意 await 關鍵字）
 
 ### 用法 A：
-```
+```javascript
 async function myPromise1() {
     try {
         await task0(
@@ -767,7 +767,7 @@ myPromise1();
 <br>
 
 ### 用法 B：
-```
+```javascript
 async function myPromise1() {
     try {
         task0(        // <--- 要變更的地方，只有這裡，沒有 await
@@ -785,7 +785,7 @@ myPromise1();
 <br>
 
 將此用法套入上一小節的「方法四」：
-```
+```javascript
 console.log('[main] start');
 setTimeout(()=>{
     console.log('>>> [timeout-1] 0');
