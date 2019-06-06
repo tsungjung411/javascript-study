@@ -11,6 +11,7 @@
 - [Promise 的錯誤處理流程](#promise-的錯誤處理流程)
 - [兩條交錯的 Promise，執行順序如何？](#兩條交錯的-promise執行順序如何)
 - [Promise 語法糖：async/await](#接續上面promise-語法糖asyncawait)
+- [[回顧] Promise = 保證，是在保證什麽？](promise--保證是在保證什麽)
 
 <br>
 <hr>
@@ -865,7 +866,7 @@ undefined
 <br>
 <br>
 
-## Promise = 保證，是在保證什麽？
+## [回顧] Promise = 保證，是在保證什麽？
 ### 三大保證
 - callback 不會在當前的任務執行結束前呼叫
 - callback 可以透過 ```.then()``` 添加
