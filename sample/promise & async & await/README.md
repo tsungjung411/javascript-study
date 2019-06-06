@@ -780,7 +780,58 @@ async function myPromise1() {
 }
 myPromise1();
 ```
-將此用法套入上一小節的「方法四」，並觀察結果：
+
+<br>
+
+將此用法套入上一小節的「方法四」：
+```
+console.log('[main] start');
+setTimeout(()=>{
+    console.log('>>> [timeout-1] 0');
+    Timer.wait(5);
+    console.log('<<< [timeout-1] 0');
+}, 0);
+
+async function myPromise1() {
+    try {
+        task0(        // <--- 要變更的地方，只有這裡，沒有 await
+            () => {}, // resolve
+            () => {}  // reject
+        );
+        await task1();
+        await task2();
+    } catch (e) {
+    }
+}
+myPromise1();
+
+console.log('[main] take a rest');
+setTimeout(()=>{
+    console.log('>>> [timeout-2] 100');
+    Timer.wait(5);
+    console.log('<<< [timeout-2] 100');
+}, 100);
+
+async function myPromise2() {
+    try {
+        task0(        // <--- 要變更的地方，只有這裡，沒有 await
+            () => {}, // resolve
+            () => {}  // reject
+        );
+        await task3();
+        await task4();
+    } catch (e) {
+    }
+}
+myPromise2();
+
+setTimeout(()=>{
+    console.log('>>> [timeout-3] 10');
+    Timer.wait(5);
+    console.log('<<< [timeout-3] 10');
+}, 10);
+console.log('[main] end');
+```
 
 執行結果：
 ```
