@@ -41,6 +41,8 @@ undefined
 <br>
 
 ## [猜想] 程式碼轉換
+
+轉換前：
 ```javascript
 async function myPromise1() {
     try {
@@ -58,6 +60,7 @@ async function myPromise1() {
 myPromise1(); // 執行 promise 鏈
 ```
 
+轉換後：
 ```javascript
 new Promise((resolve, reject) => {
     try {
