@@ -863,6 +863,10 @@ undefined
 - 第一個 async 標記：會當成在 Promise(...) 建構子的 excutor
 - 第二個以後的 async 標記：會放在 .then(...) 區塊執行
 
+### 如何評估 await 區塊的範圍
+- [程式碼](async_and_await__alternating_test.js)
+- [執行結果](async_and_await__alternating_results.md)
+
 <br>
 <br>
 
