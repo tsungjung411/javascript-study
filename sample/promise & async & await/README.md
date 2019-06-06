@@ -727,6 +727,9 @@ console.log('[main] end');
 結果完全同**方法一（使用 Promise）**
 
 
+<br>
+<br>
+
 ## （接續上面）Promise 語法糖
 以下兩種用法，結果會是如何？（注意 await 關鍵字）
 
@@ -745,6 +748,9 @@ async function myPromise1() {
 }
 myPromise1();
 ```
+執行結果：參考上面方法四
+
+<br>
 
 ### 用法 B：
 ```
