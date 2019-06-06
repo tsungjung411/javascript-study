@@ -467,19 +467,19 @@ function task1(params) {
     console.log('<<< [Task-1]');
 }
 
-function task2(resolve, reject) {
+function task2(params) {
     console.log('>>> [Task-2] ');
     Timer.wait(5);
     console.log('<<< [Task-2] ');
 }
 
-function task3(resolve, reject) {
+function task3(params) {
     console.log('>>> [Task-3] ');
     Timer.wait(5);
     console.log('<<< [Task-3] ');
 }
 
-function task4(resolve, reject) {
+function task4(params) {
     console.log('>>> [Task-4] ');
     Timer.wait(5);
     console.log('<<< [Task-4] ');
