@@ -865,9 +865,52 @@ undefined
 
 <br>
 
-### 如何評估 await 區塊的範圍
+### 如何界定 await 區塊的範圍
 - [程式碼](async_and_await__alternating_test.js)
 - [執行結果](async_and_await__alternating_results.md)
+
+<br>
+<br>
+
+## Promise 到底解決什麽問題？
+- Promise 鏈的寫法，用扁平式的傳統寫法就可以辦到了
+- 而且幾乎所有的程式語言，都有支援 return, throw/raise 的例外處理
+- 何必需要 Promise ?
+
+
+- 由於 Javascript 是單一執行緒
+- 對於比較沈重的任務，會希望在 main thread 閒置的時候再來執行這個任務
+- 因此，會呼叫 setTimeout(...) 來把任務丟到 pririty queue 中
+- 問題來了，如果處理過程中發生錯誤，似乎無法捕捉？
+
+範例程式：
+```javascript
+function todo() {
+    console.log('>>> todo');
+    try {
+        setTimeout(function() {
+            console.log('>>> 處理沈重的任務');
+            throw "HTTP 408 Request Timeout";
+        }, 0);
+        console.log('<<< todo');
+    } catch(e) {
+        console.log('error:', e);
+    }
+}
+
+try {
+    todo();
+} catch(e) {
+    console.log('error:', e);
+}
+```
+
+執行結果：
+```
+Uncaught HTTP 408 Request Timeout
+```
+無法捕捉例外/錯誤
+
 
 <br>
 <br>
