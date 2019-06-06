@@ -46,12 +46,14 @@ function task2(params) {
     console.log('>>> [Task-2] params:', params);
     Timer.wait(5);
     console.log('<<< [Task-2] ');
+    return "task2-result";
 }
 
 function task3(params) {
     console.log('>>> [Task-3] params:', params);
     Timer.wait(5);
     console.log('<<< [Task-3] ');
+    return "task3-result";
 }
 
 function task4(params) {
@@ -70,12 +72,14 @@ function task6(params) {
     console.log('>>> [Task-6] params:', params);
     Timer.wait(5);
     console.log('<<< [Task-6] ');
+    return "task6-result";
 }
 
 function task7(params) {
     console.log('>>> [Task-7] params:', params);
     Timer.wait(5);
     console.log('<<< [Task-7] ');
+    return "task7-result";
 }
 
 function task8(params) {
@@ -102,7 +106,7 @@ async function myPromise1() {
         await task1();
         task2();
         await task3();
-        task4
+        task4()
     } catch (e) {
     }
 }
