@@ -767,8 +767,36 @@ async function myPromise1() {
 }
 myPromise1();
 ```
+將此用法套入上一小節的「方法四」，並觀察結果：
 
-將上面兩種用法A/B，再套入上一小節的「方法四」，並觀察結果：
+執行結果：
+```
+[main] start
+>>> [Task 0] init task
+<<< [Task 0] init task
+>>> [Task-1] <----------- task-1 不是 async action
+<<< [Task-1] <----------- task-1 不是 async action
+[main] take a rest
+>>> [Task 0] init task
+<<< [Task 0] init task
+>>> [Task-3]  <----------- task-3 不是 async action
+<<< [Task-3]  <----------- task-3 不是 async action
+[main] end
+>>> [Task-2] 
+<<< [Task-2] 
+>>> [Task-4] 
+<<< [Task-4] 
+undefined
+>>> [timeout-1] 0
+<<< [timeout-1] 0
+>>> [timeout-2] 100
+<<< [timeout-2] 100
+>>> [timeout-3] 10
+<<< [timeout-3] 10
+```
+- task-1 & task-3 不是 async task
+- 第一個 async 標記：會當成在 Promise(...) 建構子的 excutor
+- 第二個以後的 async 標記：會放在 .then(...) 區塊執行
 
 <br>
 <br>
