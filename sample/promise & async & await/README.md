@@ -877,6 +877,7 @@ undefined
 - 而且幾乎所有的程式語言，都有支援 return, throw/raise 的例外處理
 - 何必需要 Promise ?
 
+<br>
 
 - 由於 Javascript 是單一執行緒
 - 對於比較沈重的任務，會希望在 main thread 閒置的時候再來執行這個任務
@@ -909,7 +910,9 @@ try {
 ```
 Uncaught HTTP 408 Request Timeout
 ```
-無法捕捉例外/錯誤
+無法捕捉例外/錯誤...
+
+怎麽辦？使用 Promise 
 
 
 <br>
