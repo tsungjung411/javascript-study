@@ -38,6 +38,8 @@ undefined
 <<< [timeout-3] 10
 ```
 
+<br>
+
 ## [猜想] 程式碼轉換
 ```javascript
 async function myPromise1() {
