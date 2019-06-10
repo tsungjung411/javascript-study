@@ -1152,3 +1152,6 @@ async function todo() {
 - [[Mozilla] Promise 使用方式](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
 - [[Mozilla] async function](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/async_function)
 - [[難] JavaScript Promise：簡介](https://developers.google.com/web/fundamentals/primers/promises)
+
+## 額外介紹
+- [You Don't Know JS: ES7: async and await?](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch4.md)
