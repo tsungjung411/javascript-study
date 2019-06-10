@@ -1116,7 +1116,7 @@ async function todo() {
         await console.log('<<< 處理沈重的任務');
     } catch(error) {
         console.log('error:', error);
-        await console.log('error 已經被處理'); 
+        console.log('error 已經被處理'); 
     }
     await console.log('<<< todo');
 }
