@@ -883,6 +883,7 @@ undefined
 - 對於比較沈重的任務，會希望在 main thread 閒置的時候再來執行這個任務
 - 因此，會呼叫 setTimeout(...) 來把任務丟到 pririty queue 中
 - 問題來了，如果處理過程中發生錯誤，似乎無法捕捉？([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises))
+
 範例程式：
 ```javascript
 function todo() {
