@@ -1130,9 +1130,12 @@ async function todo() {
 ## [回顧] Promise = 保證，是在保證什麽？
 ### 三大保證
 - callback 不會在當前的任務執行結束前呼叫
+  - → 以 function 為一個執行區塊
 - callback 可以透過 ```.then()``` 添加
+  - → then() 的參數，本身就是一個 function 的指標，仍然是以 function 為一個執行區塊，但優先權會較低
 - 多個 callback 可以透過「重複呼叫 ```.then()```」 來達成
-
+  - → 多個任務的串接方式
+  
 (~~聽起來就像廢話~~)
 
 <br>
