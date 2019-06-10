@@ -11,6 +11,8 @@
 - [Promise 的錯誤處理流程](#promise-的錯誤處理流程)
 - [兩條交錯的 Promise，執行順序如何？](#兩條交錯的-promise執行順序如何)
 - [Promise 語法糖：async/await](#接續上面promise-語法糖asyncawait)
+- [Promise 到底解決什麽問題？](#promise-到底解決什麽問題)
+- [如何正確使用 Promise 和 async/await 實作？](#如何正確使用-promise-和-asyncawait-實作)
 - [[回顧] Promise = 保證，是在保證什麽？](#回顧-promise--保證是在保證什麽)
 
 <br>
@@ -1009,7 +1011,7 @@ async function todo() {
     try {
         console.log('>>> 處理沈重的任務');
         throw "HTTP 408 Request Timeout";
-	    console.log('<<< 處理沈重的任務');
+        console.log('<<< 處理沈重的任務');
     } catch(error) {
         console.log('[caller] error:', error);
         console.log('[caller] error 已經被處理');
