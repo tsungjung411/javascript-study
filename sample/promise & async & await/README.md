@@ -942,6 +942,7 @@ function todo() {
         try {
             console.log('>>> 處理沈重的任務');
             throw "HTTP 408 Request Timeout";
+	    console.log('<<< 處理沈重的任務');
         } catch(error) {
             caller.error = error;
             caller.raiseError(error);
@@ -966,6 +967,60 @@ todo();
 [caller] error: HTTP 408 Request Timeout
 [caller] error 已經被處理
 ```
+
+<br>
+<br>
+
+## 如何正確使用 Promise 和 async/await 實作？
+實作上一節的例子：
+
+- 如何用 Promise 實作？
+```javascript
+todo = new Promise((resolve, reject) => {resolve()})
+.then(() => {console.log('>>> todo')})
+.then(() => {
+    console.log('>>> 處理沈重的任務');
+    throw "HTTP 408 Request Timeout";
+	console.log('<<< 處理沈重的任務');
+})
+.catch((error) => {
+     console.log('[caller] error:', error);
+     console.log('[caller] error 已經被處理');
+})
+.then(() => {console.log('<<< todo')})
+```
+
+執行結果：
+```
+>>> todo
+>>> 處理沈重的任務
+[caller] error: HTTP 408 Request Timeout
+[caller] error 已經被處理
+<<< todo
+```
+
+
+- 如何用 async/await 實作？
+```javascript
+async function todo() {
+    const initTask = () => {};
+    await initTask();
+    await console.log('>>> todo');
+    try {
+        console.log('>>> 處理沈重的任務');
+        throw "HTTP 408 Request Timeout";
+	    console.log('<<< 處理沈重的任務');
+    } catch(error) {
+        console.log('[caller] error:', error);
+        console.log('[caller] error 已經被處理');
+    }
+    await console.log('<<< todo');
+}
+
+todo();
+```
+
+執行結果：同使用 Promise()
 
 <br>
 <br>
