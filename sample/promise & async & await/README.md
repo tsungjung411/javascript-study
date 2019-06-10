@@ -883,7 +883,6 @@ undefined
 - 對於比較沈重的任務，會希望在 main thread 閒置的時候再來執行這個任務
 - 因此，會呼叫 setTimeout(...) 來把任務丟到 pririty queue 中
 - 問題來了，如果處理過程中發生錯誤，似乎無法捕捉？
-
 範例程式：
 ```javascript
 function todo() {
@@ -911,8 +910,47 @@ try {
 <br> > <b>Uncaught HTTP 408 Request Timeout</b>
 <br>無法捕捉例外/錯誤...
 
-怎麽辦？使用 Promise 
+- [解法] 在 setTimeout 裡捕捉錯誤
+```javascript
+setTimeout(function() {
+    try {
+        console.log('>>> 處理沈重的任務');
+        throw "HTTP 408 Request Timeout";
+    } catch(error) {
+        console.log('在 setTimout 捕捉到 e:', errot);
+    }
+}, 0);
+```
 
+- 如果想要回報 error 給呼叫者，要如何回傳？
+```javascript
+function todo() {
+    console.log('>>> todo');
+    try {
+        const caller = {};
+        const heavyTask = function(caller) {
+	    try {
+                console.log('>>> 處理沈重的任務');
+                throw "HTTP 408 Request Timeout";
+            } ctach(error) {
+	        caller.error = error;
+	    }
+	};
+	heavyTask = heavyTask.bind(caller);
+	
+        setTimeout(function() {
+	    heavyTask();
+        }, 0);
+        console.log('<<< todo');
+	return caller;
+    } catch(e) {
+        console.log('error:', e);
+    }
+}
+
+caller = todo();
+console.log(caller);
+```
 
 <br>
 <br>
