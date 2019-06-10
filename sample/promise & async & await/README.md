@@ -887,15 +887,11 @@ undefined
 ```javascript
 function todo() {
     console.log('>>> todo');
-    try {
-        setTimeout(function() {
-            console.log('>>> 處理沈重的任務');
-            throw "HTTP 408 Request Timeout";
-        }, 0);
-        console.log('<<< todo');
-    } catch(e) {
-        console.log('error:', e);
-    }
+    setTimeout(function() {
+        console.log('>>> 處理沈重的任務');
+        throw "HTTP 408 Request Timeout";
+    }, 0);
+    console.log('<<< todo');
 }
 
 try {
@@ -906,9 +902,13 @@ try {
 ```
 
 執行結果：
-<br>執行發生錯誤：
-<br> > <b>Uncaught HTTP 408 Request Timeout</b>
-<br>無法捕捉例外/錯誤...
+```
+>>> todo
+<<< todo
+>>> 處理沈重的任務
+Uncaught HTTP 408 Request Timeout
+```
+執行發生錯誤，無法捕捉例外/錯誤...
 
 - [解法] 在 setTimeout 裡捕捉錯誤
 ```javascript
@@ -926,30 +926,40 @@ setTimeout(function() {
 ```javascript
 function todo() {
     console.log('>>> todo');
-    try {
-        const caller = {};
-        const heavyTask = function(caller) {
-	    try {
-                console.log('>>> 處理沈重的任務');
-                throw "HTTP 408 Request Timeout";
-            } ctach(error) {
-	        caller.error = error;
-	    }
-	};
-	heavyTask = heavyTask.bind(caller);
-	
-        setTimeout(function() {
-	    heavyTask();
-        }, 0);
-        console.log('<<< todo');
-	return caller;
-    } catch(e) {
-        console.log('error:', e);
-    }
+    const caller = {
+        raiseError: function(error) {
+            console.log('error:', error);
+            console.log('error 已經被處理');
+        }
+    };
+
+    const heavyTask = function(caller) {
+        try {
+            console.log('>>> 處理沈重的任務');
+            throw "HTTP 408 Request Timeout";
+        } catch(error) {
+            caller.error = error;
+            caller.raiseError(error);
+        }
+    }.bind(this, caller);
+
+    setTimeout(function() {
+        heavyTask();
+    }, 0);
+
+    console.log('<<< todo');
 }
 
-caller = todo();
-console.log(caller);
+todo();
+```
+
+執行結果：
+```
+>>> todo
+<<< todo
+>>> 處理沈重的任務
+error: HTTP 408 Request Timeout
+error 已經被處理
 ```
 
 <br>
