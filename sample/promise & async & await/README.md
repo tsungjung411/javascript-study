@@ -891,6 +891,7 @@ function todo() {
     setTimeout(function() {
         console.log('>>> 處理沈重的任務');
         throw "HTTP 408 Request Timeout";
+	console.log(' 處理沈重的任務');
     }, 0);
     console.log('<<< todo');
 }
@@ -917,8 +918,9 @@ setTimeout(function() {
     try {
         console.log('>>> 處理沈重的任務');
         throw "HTTP 408 Request Timeout";
+	console.log('<<< 處理沈重的任務');
     } catch(error) {
-        console.log('在 setTimout 捕捉到 e:', errot);
+        console.log('在 setTimout 捕捉到 e:', error);
     }
 }, 0);
 ```
