@@ -971,6 +971,64 @@ todo();
 ```
 
 <br>
+
+- 如果想要執行多項任務？
+```javascript
+function todo() {
+    console.log('>>> todo');
+    const caller = {
+        countTask:0,
+        finishTask(self) {
+            self.countTask += 1;
+	    
+	    // 因為是單一執行緒，所以不會有變數同步讀寫問題
+            if (self.countTask == 2) {
+                console.log('所有的任務都完成了!');
+            }
+        }
+    };
+
+    const heavyTask1 = function(caller) {
+        console.log('>>> 處理沈重的任務1');
+        Timer.wait(5);
+        console.log('<<< 處理沈重的任務1');
+        caller.finishTask(caller);
+    }.bind(this, caller);
+
+    const heavyTask2 = function(caller) {
+        console.log('>>> 處理沈重的任務2');
+        Timer.wait(5);
+        console.log('<<< 處理沈重的任務2');
+        caller.finishTask(caller);
+    }.bind(this, caller);
+
+    setTimeout(function() {
+        heavyTask1();
+    }, 100);
+    setTimeout(function() {
+        heavyTask2();
+    }, 0);
+
+    console.log('<<< todo');
+}
+
+todo();
+```
+
+執行結果：
+```
+todo();
+>>> todo
+<<< todo
+>>> 處理沈重的任務2
+<<< 處理沈重的任務2
+>>> 處理沈重的任務1
+<<< 處理沈重的任務1
+所有的任務都完成了!
+```
+
+
+<br>
 <br>
 
 ## 如何正確使用 Promise 和 async/await 實作？
