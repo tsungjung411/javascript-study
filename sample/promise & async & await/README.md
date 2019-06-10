@@ -1027,12 +1027,66 @@ todo();
 所有的任務都完成了!
 ```
 
+若用 Promise 來實作，會變得很精簡：
+```javascript
+function todo() {
+    console.log('>>> todo');
+
+    const task1 = new Promise(resolve => resolve())
+    .then(() => {
+        console.log('>>> 處理沈重的任務1');
+        Timer.wait(5);
+        console.log('<<< 處理沈重的任務1');
+    });
+    const task2 = new Promise(resolve => resolve())
+    .then(() => {
+        console.log('>>> 處理沈重的任務2');
+        Timer.wait(5);
+        console.log('<<< 處理沈重的任務2');
+    })
+    Promise.all([task1, task2]);
+
+    console.log('<<< todo');
+}
+
+todo()
+```
+
+個人看法：
+- Promise 主要應該是用來解決「多個任務控管」的問題，以彌補沒有多執行緒的困擾
+- 多個任務的串接，建議使用「扁平式的傳統寫法」即可，不要用 Promise，因為只是循序執行
+  - 若使用 Promise.then() 或是 await 來取代，會增加 thread 的 context switch 時間
+
 
 <br>
 <br>
 
 ## 如何正確使用 Promise 和 async/await 實作？
-實作上一節的例子：
+```javascript
+function todo() {
+    console.log('>>> todo');
+    try {
+        console.log('>>> 處理沈重的任務');
+        throw "HTTP 408 Request Timeout";
+        console.log('<<< 處理沈重的任務');
+    } catch(error) {
+        console.log('error:', error);
+        console.log('error 已經被處理'); 
+    }
+    console.log('<<< todo');
+}
+
+todo();
+```
+
+執行結果：
+```
+>>> todo
+>>> 處理沈重的任務
+error: HTTP 408 Request Timeout
+error 已經被處理
+<<< todo
+```
 
 - 如何用 Promise 實作？
 ```javascript
@@ -1044,21 +1098,11 @@ todo = new Promise((resolve, reject) => {resolve()})
 	console.log('<<< 處理沈重的任務');
 })
 .catch((error) => {
-     console.log('[caller] error:', error);
-     console.log('[caller] error 已經被處理');
+     console.log('error:', error);
+     console.log('error 已經被處理');
 })
 .then(() => {console.log('<<< todo')})
 ```
-
-執行結果：
-```
->>> todo
->>> 處理沈重的任務
-[caller] error: HTTP 408 Request Timeout
-[caller] error 已經被處理
-<<< todo
-```
-
 
 - 如何用 async/await 實作？
 ```javascript
@@ -1069,15 +1113,13 @@ async function todo() {
     try {
         console.log('>>> 處理沈重的任務');
         throw "HTTP 408 Request Timeout";
-        console.log('<<< 處理沈重的任務');
+        await console.log('<<< 處理沈重的任務');
     } catch(error) {
-        console.log('[caller] error:', error);
-        console.log('[caller] error 已經被處理');
+        console.log('error:', error);
+        await console.log('error 已經被處理'); 
     }
     await console.log('<<< todo');
 }
-
-todo();
 ```
 
 執行結果：同使用 Promise()
