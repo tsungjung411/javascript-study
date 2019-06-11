@@ -1157,7 +1157,7 @@ async function todo() {
 <br>
 
 ## 進階用法
-### .then(...) 的縮寫
+### 縮寫用法1
 ```javascript
 .then(successCallback, failureCallback)
 ```
@@ -1169,17 +1169,49 @@ async function todo() {
 
 <br>
 
-### .catch(...) 的縮寫來源
-```javascript
-.catch(failureCallback)
-```
-是由下面縮寫而來
+### 縮寫用法2
 ```
 .then(null, failureCallback)
+```
+可以寫成
+```javascript
+.catch(failureCallback)
 ```
 
 <br>
 
+### 縮寫用法3 - 如果不會有 reject
+```javascript
+new Promise((resolve, reject) => {resolve()})
+.then(...)
+...
+```
+可以忽略 reject 寫成：
+```javascript
+new Promise((resolve) => {resolve()})
+.then(...)
+...
+```
+或是
+```javascript
+Promise.resolve()
+.then(...)
+...
+```javascript
+
+<br>
+
+### 縮寫用法4 - 如果不會有 resolve
+```javascript
+new Promise((resolve, reject) => {reject()})
+.catch(...)
+...
+```
+可以寫成：
+```javascript
+Promise.reject()
+.catch(...)
+...
 
 
 <br>
