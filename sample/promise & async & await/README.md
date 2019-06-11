@@ -115,6 +115,7 @@ promise
 
 個人看法：
 - 這跟傳統的 listener 作法，根本沒差別啊？
+- Promise 就是 listener 嗎？
 - (繼續看下去)
 
 ```javascript
@@ -131,7 +132,7 @@ promise.setFailureListener(failureCallback);
 ### async callback v.s. thread 的個人看法：
 - 上面的作法，應該叫做「非同步函數回呼」比較適當吧?
 - 因為「非同步函數呼叫」，會以為是「跑在其他執行緒(thread)上執行」
-- 而 Promise 只是在事後呼叫 callback，並非是 thread
+- 而 promise 只是在事後呼叫 callback，並非是 thread
 
 <br>
 
@@ -151,7 +152,7 @@ promise.setFailureListener(failureCallback);
 <br>
 <br>
 
-## 實際模擬 Promise，感受一下
+## 實際模擬 Promise，感受一下 Promise 的串接效果
 
 基本架構：
 - 第一個任務（最初的任務，位於建構子）是透過「callback」來回報結果
