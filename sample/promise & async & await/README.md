@@ -1345,6 +1345,7 @@ function todo() {
             }
         }
     }
+    console.log('Done!');
 }
 todo();
 ```
