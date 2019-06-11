@@ -24,3 +24,4 @@ function doSomething(successCallback, failureCallback) {
 doSomething(successCallback, failureCallback)
 doSomething(successCallback, failureCallback)
 doSomething(successCallback, failureCallback)
+
