@@ -7,6 +7,12 @@
  - [JavaScript Functional Programming 指南](https://jigsawye.gitbooks.io/mostly-adequate-guide/content/)
  - [[學習筆記目錄] JavaScript: Understanding the Weird Part（JavaScript 全攻略：克服JS 的奇怪部分）](https://pjchender.blogspot.com/2017/06/javascript-understanding-weird-part.html)
 
+<br>
+
+## 進階學習資源
+ - [12 Concepts That Will Level Up Your JavaScript Skills](https://hackernoon.com/12-javascript-concepts-that-will-level-up-your-development-skills-b37d16ad7104)
+
+<br>
 
 ## 其他主題
  - [Who’s “this” in Javascript](https://goo.gl/GW1Yj4)
