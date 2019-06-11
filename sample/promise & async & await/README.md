@@ -102,7 +102,10 @@ doSomething(successCallback, failureCallback)
 <br>
 
 ### callback 的新的作法 (= Promise)
-Promise 概念：([點此看完整程式碼](modern_callback.js)，看不懂不要緊，只是概念簡介)
+Promise 概念：
+- [點此看完整程式碼](modern_callback.js)
+- 看不懂不要緊，只是 promise 的概念簡介
+- 只要了解這樣的用法，跟 callback 有差異就可以了
 ```javascript
 let promise = doSomething();
 promise.then(successCallback, failureCallback);
