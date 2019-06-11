@@ -120,14 +120,15 @@ promise
 
 個人看法：
 - 這跟傳統的 listener 作法，根本沒差別啊？
+  ```javascript
+  // listener 的用法
+  let promise = doSomething();
+  promise.setSuccessListener(successCallback);
+  promise.setFailureListener(failureCallback);
+  ```
 - Promise 就是 listener 嗎？
 - (繼續看下去)
 
-```javascript
-let promise = doSomething();
-promise.setSuccessListener(successCallback);
-promise.setFailureListener(failureCallback);
-```
 
 > 新的作法會回傳 promise 物件, 可以在事後附加 callback
 > <br>我們稱為「非同步函數呼叫」。([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises))
@@ -148,6 +149,7 @@ promise.setFailureListener(failureCallback);
   - 而 promise 可以一直串接下去
 - 即便 listener 可以串接，它也只是設定 callback，並不是用來執行多個小任務
   ```
+  // listener 的用法
   setOnClickListener(listener) {
       this.mOnClickListener = listener;
       return this;
