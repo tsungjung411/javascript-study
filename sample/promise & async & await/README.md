@@ -16,6 +16,7 @@
 - 追根究底
   - [Promise 到底解決什麽問題？](#promise-到底解決什麽問題)
   - [如何正確使用 Promise 和 async/await 實作？](#如何正確使用-promise-和-asyncawait-實作)
+  - [進階用法](進階用法)
 - [[回顧] Promise = 保證，是在保證什麽？](#回顧-promise--保證是在保證什麽)
 
 <br>
@@ -1151,6 +1152,35 @@ async function todo() {
 ```
 
 執行結果：同使用 Promise()
+
+<br>
+<br>
+
+## 進階用法
+### .then(...) 的縮寫
+```javascript
+.then(successCallback, failureCallback)
+```
+可以寫成
+```
+.then(successCallback)
+.catch(failureCallback)
+```
+
+<br>
+
+### .catch(...) 的縮寫來源
+```javascript
+.catch(failureCallback)
+```
+是由下面縮寫而來
+```
+.then(null, failureCallback)
+```
+
+<br>
+
+
 
 <br>
 <br>
