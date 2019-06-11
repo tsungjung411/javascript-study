@@ -1257,6 +1257,53 @@ Promise.reject('unknown error')
 ```
 
 <br>
+
+### 仿 Thread.join 功能
+> 如果想要像 Thread 一樣，能等 Thread-A & Thread-B 兩者都做完再做事，可以使用 Promise.all([...])
+```javascript
+function todo() {
+    console.log('>>> todo');
+    let taskA = Promise.resolve()
+    .then(() => console.log('task A1'))
+    .then(() => console.log('task A2'))
+    .then(() => console.log('task A3'));
+    
+    let taskB = Promise.resolve()
+    .then(() => console.log('task B1'))
+    .then(() => console.log('task B2'))
+    .then(() => console.log('task B3'));
+    
+    let taskC = Promise.resolve()
+    .then(() => console.log('task C1'))
+    .then(() => console.log('task C2'))
+    .then(() => console.log('task C3'));
+    
+    taskX = Promise.all([taskA, taskB, taskC]);
+    taskX.then(() => console.log('Done!'));
+
+    console.log('<<< todo');
+}
+todo()
+```
+
+執行結果：
+```
+>>> todo
+<<< todo
+task A1
+task B1
+task C1
+task A2
+task B2
+task C2
+task A3
+task B3
+task C3
+Done!
+```
+
+
+<br>
 <br>
 
 ## [回顧] Promise = 保證，是在保證什麽？
