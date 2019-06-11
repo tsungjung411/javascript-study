@@ -53,7 +53,7 @@
 <br>
 
 ## Promise 起源
-- 底下內容出處：https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises
+> 底下部份內容，參考自 https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises
 
 ### 先準備共同的回傳呼叫函數(Callback)
 ```javascript
