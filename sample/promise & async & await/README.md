@@ -1180,41 +1180,71 @@ async function todo() {
 
 <br>
 
-### 縮寫用法3 - 如果不會有 reject
+### 縮寫用法3-1 (如果不會有 resolve，且 value 是空值)
 ```javascript
 new Promise((resolve, reject) => {resolve()})
-.then(...)
-...
+.then(() => {...})
 ```
 
 可以忽略 reject 寫成：
 ```javascript
 new Promise((resolve) => {resolve()})
-.then(...)
-...
+.then(() => {...})
 ```
 
 或是
 ```javascript
 Promise.resolve()
-.then(...)
-...
+.then(() => {...})
 ```
 
 <br>
 
-### 縮寫用法4 - 如果不會有 resolve
+### 縮寫用法3-2 (如果不會有 resolve，但 value 不為空值)
+```javascript
+new Promise((resolve, reject) => {resolve(value)})
+.then((value) => {...})
+```
+
+可以忽略 reject 寫成：
+```javascript
+new Promise((resolve) => {resolve(value)})
+.then((value) => {...})
+```
+
+或是
+```javascript
+Promise.resolve(value)
+.then((value) => {...})
+```
+
+<br>
+
+### 縮寫用法4-1 (如果不會有 resolve，且 reason 是空值)
 ```javascript
 new Promise((resolve, reject) => {reject()})
-.catch(...)
-...
+.catch(() => {...})
 ```
 
 可以寫成：
 ```javascript
 Promise.reject()
-.catch(...)
+.catch(() => {...})
 ...
+```
+
+<br>
+
+### 縮寫用法4-2 (如果不會有 resolve，但 reason 不為空值)
+```javascript
+new Promise((resolve, reject) => {reject('unknown error')})
+.catch((reason) => {...}) // reason = 'unknown error'
+```
+
+可以寫成：
+```javascript
+Promise.reject('unknown error')
+.catch((reason) => {...}) // reason = 'unknown error'
 ```
 
 <br>
