@@ -1191,13 +1191,13 @@ async function todo() {
 
 ### 縮寫用法3-1 (如果不會有 reject，且 value 是空值)
 ```javascript
-new Promise((resolve, reject) => {resolve()})
+new Promise((resolve, reject) => {resolve();})
 .then(() => {...})
 ```
 
 可以忽略 reject 寫成：
 ```javascript
-new Promise((resolve) => {resolve()})
+new Promise((resolve) => {resolve();})
 .then(() => {...})
 ```
 
@@ -1211,13 +1211,13 @@ Promise.resolve()
 
 ### 縮寫用法3-2 (如果不會有 reject，但 value 不為空值)
 ```javascript
-new Promise((resolve, reject) => {resolve(value)})
+new Promise((resolve, reject) => {resolve(value);})
 .then((value) => {...})
 ```
 
 可以忽略 reject 寫成：
 ```javascript
-new Promise((resolve) => {resolve(value)})
+new Promise((resolve) => {resolve(value);})
 .then((value) => {...})
 ```
 
@@ -1231,7 +1231,7 @@ Promise.resolve(value)
 
 ### 縮寫用法4-1 (如果不會有 resolve，且 reason 是空值)
 ```javascript
-new Promise((resolve, reject) => {reject()})
+new Promise((resolve, reject) => {reject();})
 .catch(() => {...})
 ```
 
@@ -1246,7 +1246,7 @@ Promise.reject()
 
 ### 縮寫用法4-2 (如果不會有 resolve，但 reason 不為空值)
 ```javascript
-new Promise((resolve, reject) => {reject('unknown error')})
+new Promise((resolve, reject) => {reject('unknown error');})
 .catch((reason) => {...}) // reason = 'unknown error'
 ```
 
@@ -1302,7 +1302,7 @@ task B4
 Done!
 ```
 
-執行過程的猜想：主任務：
+執行過程的拆解：主任務：
 ```javascript
 function todo() {
     console.log('>>> todo');
@@ -1313,7 +1313,7 @@ function todo() {
 }
 ```
 
-執行過程的猜想：子任務：
+執行過程的拆解：子任務：
 ```javascript
 function todo() {
     // 這邊不考慮回傳值的串接
