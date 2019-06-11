@@ -41,14 +41,23 @@
 ## 預備知識
 > 在閱讀下面的內容前，請先有基本**正確**的認知：
 - JS（javascript）不支援多執行緒（Multi-thread / Multithread），所以都是跑在單一執行緒上
+
 - 既然沒有執行緒，為何執行時會看到「非同步執行（非循序執行）」？
-  - 那是因為單一執行緒的執行片段，可以有優先權（Priority）的高低，可以參考 [Java](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#setPriority(int))
+  - 那是因為單一執行緒的執行片段，可以有優先權（Priority）的高低，可以參考 [Java 的執行緒概念](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#setPriority(int))
   - 預設優先權通常為 5，最小為 1，最大為 10（這是 Java 的情況）
+  
 - 對於 JS，只要知道：
   - 呼叫 **setTimeout**, **Promise**, **async/await** 會分割出程式片段，並給予較低的優先權
-  - 接著，將這些程式片段放到執行緒池（thread pool），等待安排執行
-  - main/UI > Promise(=async/await) > setTimeout
+  - 接著，將這些程式片段放到優先權佇列（priority queue），等待安排執行，讓單一執行緒有非同步的現象
+  - 優先權順序：main/UI > Promise(=async/await) > setTimeout
   - setTimeout 優先權最低
+  
+- setTimeout(()=>{}, 5000) 不等於 Thread.sleep(5000)
+  - setTimeout(...) 是把 ```()=>{}``` 這個 function 的程式片段之優先權降到很低
+  - 然後丟到優先權佇列（priority queue）
+  - 因此，並不會直接卡住 main/UI 執行與更新
+  - 而 Thread.sleep(5000) 是直接卡住當前的執行緒
+  
 - 最後重申一次，上面所提的都是跑在單一執行緒上
 
 
