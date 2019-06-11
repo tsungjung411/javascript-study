@@ -139,14 +139,14 @@ promise.setFailureListener(failureCallback);
 <br>
 
 ### promise v.s. listener 的個人看法：
-- promise 並非只是當作 callback，而是用串接多個小任務
-- 跟 listener 的差別在於：
+- promise 並非只是當作 callback，而是用來串接多個小任務
+- promise 跟 listener 的差別在於：
   - listenr 函數通常是無回傳值，所以無法串接
-  - 而 promise 可以一直串接
+  - 而 promise 可以一直串接下去
 - 即便 listener 可以串接，它也只是設定 callback，並不是用來執行多個小任務
   ```
   setOnClickListener(listener) {
-      this.mOnClickListener = listenerㄤ
+      this.mOnClickListener = listener;
       return this;
   }
   ```
