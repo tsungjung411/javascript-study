@@ -7,7 +7,7 @@
 - [什麽是 Promise](#什麽是-promise)
 - [預備知識](#預備知識)
 - [Promise 起源](#promise-起源)
-- [實際模擬 Promise，感受一下](#實際模擬-promise感受一下)
+- [實際模擬 Promise，感受一下 Promise 的串接效果](#實際模擬-promise感受一下-promise-的串接效果)
 - [波動拳：傳統作法 v.s. MyPromise v.s. Promise](#波動拳傳統作法-vs-mypromise-vs-promise)
 - [Promise 的錯誤處理流程](#promise-的錯誤處理流程)
 - [兩條交錯的 Promise，執行順序如何？](#兩條交錯的-promise執行順序如何)
