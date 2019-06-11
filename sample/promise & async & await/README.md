@@ -1186,18 +1186,20 @@ new Promise((resolve, reject) => {resolve()})
 .then(...)
 ...
 ```
+
 可以忽略 reject 寫成：
 ```javascript
 new Promise((resolve) => {resolve()})
 .then(...)
 ...
 ```
+
 或是
 ```javascript
 Promise.resolve()
 .then(...)
 ...
-```javascript
+```
 
 <br>
 
@@ -1207,12 +1209,13 @@ new Promise((resolve, reject) => {reject()})
 .catch(...)
 ...
 ```
+
 可以寫成：
 ```javascript
 Promise.reject()
 .catch(...)
 ...
-
+```
 
 <br>
 <br>
