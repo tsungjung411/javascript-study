@@ -71,8 +71,9 @@ function failureCallback(error) {
 <br>
 
 ### callback 的傳統作法
-範例程式：
+範例程式：([點此看完整程式碼](traditional_callback.js))
 ```javascript
+// 做某些事
 function doSomething(successCallback, failureCallback) {
     // 隨機產生 true(50%) 或 false(50%)
     var trueOfFalse = parseInt(Math.floor(Math.random() * 2));
