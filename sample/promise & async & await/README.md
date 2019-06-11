@@ -42,7 +42,8 @@
   - 那是因為單一執行緒的執行片段，可以有優先權（Priority）的高低，可以參考 [Java](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#setPriority(int))
   - 預設優先權通常為 5，最小為 1，最大為 10（這是 Java 的情況）
 - 對於 JS，只要知道：
-  - 呼叫 setTimeout, Promise, async/await 會分割出程式片段，並給予較低的優先權，然後放到執行緒池（thread pool）
+  - 呼叫 setTimeout, Promise, async/await 會分割出程式片段，並給予較低的優先權
+  - 接著，將這些程式片段放到執行緒池（thread pool），等待安排執行
   - main/UI > Promise(=async/await) > setTimeout
   - setTimeout 優先權最低
 - 最後重申一次，上面所提的都是跑在單一執行緒上
