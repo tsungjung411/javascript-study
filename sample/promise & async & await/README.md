@@ -1271,19 +1271,19 @@ function todo() {
     let taskB = Promise.resolve()
     .then(() => console.log('task B1'))
     .then(() => console.log('task B2'))
-    .then(() => console.log('task B3'));
+    .then(() => console.log('task B3'))
+    .then(() => console.log('task B4'));
     
     let taskC = Promise.resolve()
     .then(() => console.log('task C1'))
     .then(() => console.log('task C2'))
-    .then(() => console.log('task C3'));
     
     taskX = Promise.all([taskA, taskB, taskC]);
     taskX.then(() => console.log('Done!'));
 
     console.log('<<< todo');
 }
-todo()
+todo();
 ```
 
 執行結果：
@@ -1298,8 +1298,55 @@ task B2
 task C2
 task A3
 task B3
-task C3
+task B4
 Done!
+```
+
+執行過程的猜想：主任務：
+```javascript
+function todo() {
+    console.log('>>> todo');
+    let taskA = Promise.resolve();
+    let taskB = Promise.resolve();
+    let taskC = Promise.resolve();
+    console.log('<<< todo');
+}
+```
+
+執行過程的猜想：子任務：
+```javascript
+function todo() {
+    // 這邊不考慮回傳值的串接
+    const promiseQueue = [
+        [
+	    () => console.log('task A1'),
+	    () => console.log('task A2'),
+	    () => console.log('task A3')
+	],
+	[
+	    () => console.log('task B1'),
+	    () => console.log('task B2'),
+	    () => console.log('task B3'),
+	    () => console.log('task B4')
+	],
+	[
+	    () => console.log('task C1'),
+	    () => console.log('task C2')
+	]
+    ]
+    while (promiseQueue.length > 0) {
+        for (var idx in promiseQueue) {
+            subQueue = promiseQueue[idx];
+            if (subQueue.length > 0) {
+                f = subQueue.shift();
+                f();
+            } else {
+                promiseQueue.splice(idx, 1);
+            }
+        }
+    }
+}
+todo();
 ```
 
 
