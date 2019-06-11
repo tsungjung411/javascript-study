@@ -1180,7 +1180,7 @@ async function todo() {
 
 <br>
 
-### 縮寫用法3-1 (如果不會有 resolve，且 value 是空值)
+### 縮寫用法3-1 (如果不會有 reject，且 value 是空值)
 ```javascript
 new Promise((resolve, reject) => {resolve()})
 .then(() => {...})
@@ -1200,7 +1200,7 @@ Promise.resolve()
 
 <br>
 
-### 縮寫用法3-2 (如果不會有 resolve，但 value 不為空值)
+### 縮寫用法3-2 (如果不會有 reject，但 value 不為空值)
 ```javascript
 new Promise((resolve, reject) => {resolve(value)})
 .then((value) => {...})
