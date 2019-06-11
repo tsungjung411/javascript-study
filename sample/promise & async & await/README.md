@@ -7,13 +7,15 @@
 - [什麽是 Promise](#什麽是-promise)
 - [預備知識](#預備知識)
 - [Promise 起源](#promise-起源)
-- [實際模擬 Promise，感受一下 Promise 的串接效果](#實際模擬-promise感受一下-promise-的串接效果)
-- [波動拳：傳統作法 v.s. MyPromise v.s. Promise](#波動拳傳統作法-vs-mypromise-vs-promise)
-- [Promise 的錯誤處理流程](#promise-的錯誤處理流程)
-- [兩條交錯的 Promise，執行順序如何？](#兩條交錯的-promise執行順序如何)
-- [Promise 語法糖：async/await](#接續上面promise-語法糖asyncawait)
-- [Promise 到底解決什麽問題？](#promise-到底解決什麽問題)
-- [如何正確使用 Promise 和 async/await 實作？](#如何正確使用-promise-和-asyncawait-實作)
+- 開始探索 Promise
+  - [實際模擬 Promise，感受一下 Promise 的串接效果](#實際模擬-promise感受一下-promise-的串接效果)
+  - [波動拳：傳統作法 v.s. MyPromise v.s. Promise](#波動拳傳統作法-vs-mypromise-vs-promise)
+  - [Promise 的錯誤處理流程](#promise-的錯誤處理流程)
+  - [兩條交錯的 Promise，執行順序如何？](#兩條交錯的-promise執行順序如何)
+  - [Promise 語法糖：async/await](#接續上面promise-語法糖asyncawait)
+- 追根究底
+  - [Promise 到底解決什麽問題？](#promise-到底解決什麽問題)
+  - [如何正確使用 Promise 和 async/await 實作？](#如何正確使用-promise-和-asyncawait-實作)
 - [[回顧] Promise = 保證，是在保證什麽？](#回顧-promise--保證是在保證什麽)
 
 <br>
