@@ -1153,5 +1153,9 @@ async function todo() {
 - [[Mozilla] async function](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/async_function)
 - [[難] JavaScript Promise：簡介](https://developers.google.com/web/fundamentals/primers/promises)
 
-## 額外介紹
+<br>
+
+## 額外閱讀資源
 - [You Don't Know JS: ES7: async and await?](https://github.com/getify/You-Dont-Know-JS/blob/master/async%20%26%20performance/ch4.md)
+- [[Summer。桑莫。夏天] 你懂 JavaScript 嗎？#25 產生器（Generator）/ asyn / await](https://cythilya.github.io/2018/11/01/generator/)
+- [[卡斯伯] 鐵人賽：JavaScript Await 與 Async](https://wcc723.github.io/javascript/2017/12/30/javascript-async-await/)
