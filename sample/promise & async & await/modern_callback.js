@@ -13,13 +13,13 @@ function failureCallback(error) {
 function doSomething() {
     // 隨機產生 true(50%) 或 false(50%)
     var trueOfFalse = parseInt(Math.floor(Math.random() * 2));
-    var executor;
+    var initExecutor;
     if (trueOfFalse) {
-        executor = (resolve, reject) => {resolve('Done');};
+        initExecutor = (resolve, reject) => {resolve('Done');};
     } else {
-        executor = (resolve, reject) => {reject('T__T');};
+        initExecutor = (resolve, reject) => {reject('T__T');};
     }
-    return new Promise(executor);
+    return new Promise(initExecutor);
 }
 
 // 使用不同的寫法，來呼叫三次
