@@ -5,6 +5,7 @@
 
 ## 大綱
 - [什麽是 Promise](#什麽是-promise)
+- [預備知識](#預備知識)
 - [Promise 起源](#promise-起源)
 - [實際模擬 Promise，感受一下](#實際模擬-promise感受一下)
 - [波動拳：傳統作法 v.s. MyPromise v.s. Promise](#波動拳傳統作法-vs-mypromise-vs-promise)
@@ -22,7 +23,7 @@
 ## 什麽是 Promise
 - Promise 是一種工具
 - Promise 是一種協助非同步的工具
-- Promise 是一種協助非同步「**回呼(回傳呼叫/callback)**」的工具
+- Promise 是一種協助非同步「**回呼(回傳呼叫/callback)**」的工具  （注意：不是指執行緒）
 - Promise 是一種協助「即將完成或失敗」的非同步回呼工具
 
 - https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises
@@ -34,7 +35,23 @@
 <br>
 <br>
 
-## [Promise 起源](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises)
+## 預備知識
+> 在閱讀下面的內容前，請先有基本**正確**的認知：
+- JS(javascript) 不支援多執行緒(Multi-thread)，所以都是跑在單一執行緒上
+- 既然沒有執行緒，為何執行緒執行時會看到「非同步執行（非循序執行）」？
+  - 那是因為單一執行緒的執行片段，可以有優先權（Priority）的高低，可以參考 [Java](https://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html#setPriority(int))
+  - 預設優先權通常為 5，最小為 1，最大為 10（這是 Java 情況）
+- 對於 JS，只要知道：呼叫 setTimeout, Promise, async/await 會分割出程式片段，並給予較低的優先權
+  - main/UI > Promise(=async/await) > setTimeout
+  - setTimeout 優先權最低
+- 最後重申一次，上面所提的都是跑在單一執行緒上
+
+
+<br>
+<br>
+
+## Promise 起源
+- 底下內容出處：https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises
 
 ### 先準備共同的回傳呼叫函數(Callback)
 ```javascript
