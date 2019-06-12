@@ -1385,7 +1385,7 @@ Promise.reject('x1', 'y2', 'z3')
 
 <br>
 
-### 如何用 Promise 打包 XMLHttpRequest
+### 如何用 Promise 打包 XMLHttpRequest ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
 ```javascript
 function getContent(url) {
     return new Promise((resolve, reject) => {
