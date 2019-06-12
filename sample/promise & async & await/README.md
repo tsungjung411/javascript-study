@@ -1179,7 +1179,7 @@ async function todo() {
 <br>
 
 ## 進階用法
-### 縮寫用法1
+### [1] 縮寫用法1
 ```javascript
 .then(successCallback, failureCallback)
 ```
@@ -1191,7 +1191,7 @@ async function todo() {
 
 <br>
 
-### 縮寫用法2
+### [2] 縮寫用法2
 ```javascript
 .then(null, failureCallback)
 ```
@@ -1202,7 +1202,7 @@ async function todo() {
 
 <br>
 
-### 縮寫用法3-1 (如果不會有 reject，且 value 是空值)
+### [3] 縮寫用法3-1 (如果不會有 reject，且 value 是空值)
 ```javascript
 new Promise((resolve, reject) => {resolve();})
 .then(() => {...})
@@ -1222,7 +1222,7 @@ Promise.resolve()
 
 <br>
 
-### 縮寫用法3-2 (如果不會有 reject，但 value 不為空值)
+### [4] 縮寫用法3-2 (如果不會有 reject，但 value 不為空值)
 ```javascript
 new Promise((resolve, reject) => {resolve(value);})
 .then((value) => {...})
@@ -1242,7 +1242,7 @@ Promise.resolve(value)
 
 <br>
 
-### 縮寫用法4-1 (如果不會有 resolve，且 reason 是空值)
+### [5] 縮寫用法4-1 (如果不會有 resolve，且 reason 是空值)
 ```javascript
 new Promise((resolve, reject) => {reject();})
 .catch(() => {...})
@@ -1257,7 +1257,7 @@ Promise.reject()
 
 <br>
 
-### 縮寫用法4-2 (如果不會有 resolve，但 reason 不為空值)
+### [6] 縮寫用法4-2 (如果不會有 resolve，但 reason 不為空值)
 ```javascript
 new Promise((resolve, reject) => {reject('unknown error');})
 .catch((reason) => {...}) // reason = 'unknown error'
@@ -1271,7 +1271,7 @@ Promise.reject('unknown error')
 
 <br>
 
-### 仿 Thread.join 功能
+### [7] 仿 Thread.join 功能
 > 如果想要像 Thread 一樣，能等 Thread-A & Thread-B 兩者都做完再做事，可以使用 Promise.all([...])
 ```javascript
 function todo() {
@@ -1365,7 +1365,7 @@ todo();
 
 <br>
 
-### resolve, reject 函數，可以傳兩個以上的參數嗎？不行
+### [8] resolve, reject 函數，可以傳兩個以上的參數嗎？不行
 ```javascript
 new Promise((resolve, reject) => {
     resolve('x1', 'y2', 'z3');
@@ -1398,7 +1398,7 @@ Promise.reject('x1', 'y2', 'z3')
 
 <br>
 
-### [1] 如何用 Promise 打包 XMLHttpRequest ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
+### [9] 如何用 Promise 打包 XMLHttpRequest？ ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
 ```javascript
 function getContent(url) {
     return new Promise((resolve, reject) => {
@@ -1436,7 +1436,7 @@ console.log('go! go! go!');
 
 <br>
 
-### [2][改寫] 如何用 Promise 打包 XMLHttpRequest 
+### [10] 如何用 Promise 打包 XMLHttpRequest？ (改寫)
 ```javascript
 function getContent(url) {
     return Promise.resolve().then(() => {
