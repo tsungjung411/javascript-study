@@ -1350,6 +1350,59 @@ function todo() {
 todo();
 ```
 
+<br>
+
+### resolve, reject 函數，可以傳兩個以上的參數嗎？不行
+```javascript
+new Promise((resolve, reject) => {
+    resolve('x1', 'y2', 'z3');
+}).then((x, y, z) => console.log(`x=${x}, y=${y}, z=${z}`));
+
+// 執行結果：x=x1, y=undefined, z=undefined
+```
+
+```javascript
+new Promise((resolve, reject) => {
+    reject('x1', 'y2', 'z3');
+}).catch((x, y, z) => console.log(`x=${x}, y=${y}, z=${z}`));
+
+// 執行結果：x=x1, y=undefined, z=undefined
+```
+
+```javascript
+Promise.resolve('x1', 'y2', 'z3')
+.then((x, y, z) => console.log(`x=${x}, y=${y}, z=${z}`));
+
+// 執行結果：x=x1, y=undefined, z=undefined
+```
+
+```javascript
+Promise.reject('x1', 'y2', 'z3')
+.catch((x, y, z) => console.log(`x=${x}, y=${y}, z=${z}`));
+
+// 執行結果：x=x1, y=undefined, z=undefined
+```
+
+### 如何用 Promise 打包 XMLHttpRequest
+```javascript
+function getContent(url) {
+    return new Promise((resolve, reject) => {
+        let request = new XMLHttpRequest();
+        request.open('GET', url);
+	request.onload = () => resolve(request.responseText);
+	request.onerror = () => reject(request.statusText);
+	request.send();
+    })
+}
+```
+
+測試：
+```
+url = 'https://github.com/tsungjung411/javascript-study/tree/master/sample/promise%20%26%20async%20%26%20await'
+getContent(url)
+.then((value) => console.log('Content:', value))
+.catch((reason) => console.log('Error:', reason));
+```
 
 <br>
 <br>
