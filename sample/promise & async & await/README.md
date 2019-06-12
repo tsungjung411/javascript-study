@@ -1383,6 +1383,8 @@ Promise.reject('x1', 'y2', 'z3')
 // 執行結果：x=x1, y=undefined, z=undefined
 ```
 
+<br>
+
 ### 如何用 Promise 打包 XMLHttpRequest
 ```javascript
 function getContent(url) {
@@ -1395,6 +1397,9 @@ function getContent(url) {
     })
 }
 ```
+> 補充：對於 open(method, url, ?async, ?username, ?password) 的第三個選項 async，如果帶入 false，跑在 main thread 下會有錯誤訊息：
+> 
+> [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
 
 測試：
 ```
@@ -1402,7 +1407,9 @@ url = 'https://github.com/tsungjung411/javascript-study/tree/master/sample/promi
 getContent(url)
 .then((value) => console.log('Content:', value))
 .catch((reason) => console.log('Error:', reason));
+console.log('go! go! go!');
 ```
+
 
 <br>
 <br>
