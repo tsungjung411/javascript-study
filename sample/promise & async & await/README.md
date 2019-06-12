@@ -1408,7 +1408,8 @@ function getContent(url) {
 	request.onerror = () => reject(request.statusText);
 	request.send();	
 	
-        console.log('> readyState:', request.readyState);
+	// 因為非同步(async = tru)，此階段尚未取得資料
+        console.log('> readyState:', request.readyState); // = XMLHttpRequest.OPENED
         console.log('> response:', request.response.substr(0,100));
         console.log('> responseText:', request.responseText.substr(0,100));
         console.log('> status:', request.status);
