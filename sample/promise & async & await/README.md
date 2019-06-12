@@ -1397,9 +1397,6 @@ function getContent(url) {
     })
 }
 ```
-> 補充：對於 open(method, url, ?async, ?username, ?password) 的第三個選項 async，如果帶入 false，跑在 main thread 下會有錯誤訊息：
-> 
-> [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
 
 測試：
 ```
@@ -1410,6 +1407,11 @@ getContent(url)
 console.log('go! go! go!');
 ```
 
+> 補充：對於 open(method, url, ?async, ?username, ?password) 的第三個選項 async，如果帶入 false，跑在 main thread 下會有錯誤訊息：
+> 
+> [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+
+從這邊就可以證明，在 initExecutor 做的事是跑在 main thread
 
 <br>
 <br>
