@@ -460,6 +460,16 @@ Do task B
 <br>
 
 ## 兩條交錯的 Promise，執行順序如何？
+> 先給與結論，在來看程式碼：
+> <br>
+> <br>假設有兩條 Promise:
+> <br>Promise1:  | task1 (1sec) | task2 (1sec) | task3 (1sec) | task4 (1sec) |
+> <br>Promise2:  | task5 (5sec) | task6 (5sec) | task7 (5sec) | task8 (5sec) |
+> <br>
+> <br>執行結果: 1 -> 5 -> 2 -> 6 -> 3 -> 7 -> 4 -> 8
+> <br>多條 Promise 是使用 BFS (Breadth First search, 廣度優先搜尋) 方式來執行 task
+> <br>跟 task 執行時間長短無關，亦不是採用 FIFO
+> <br>
 
 用來消耗 CPU 的計時器：
 ```javascript
