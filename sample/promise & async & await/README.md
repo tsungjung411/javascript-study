@@ -1422,16 +1422,17 @@ function getContent(url) {
 ```
 url = 'https://github.com/tsungjung411/javascript-study/tree/master/sample/promise%20%26%20async%20%26%20await'
 getContent(url)
-.then((value) => console.log('Content:', value))
-.catch((reason) => console.log('Error:', reason));
+    .then((value) => console.log('Content:', value))
+    .catch((reason) => console.log('Error:', reason));
 console.log('go! go! go!');
 ```
 
-> 補充：對於 open(method, url, ?async, ?username, ?password) 的第三個選項 async，如果帶入 false，跑在 main thread 下會有錯誤訊息：
+> 補充：對於 open(method, url, ?async, ?username, ?password) 的第三個選項 async，如果帶入 false，跑在 main thread 下會有警告訊息：
 > 
 > [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
 
-從這邊就可以證明，在 initExecutor 做的事是跑在 main thread
+> 實際測試：不管是在 Promise 的 then(...) 區塊、還是在 setTimeout(...) 區塊執行，都會印出 warning。
+
 
 <br>
 
@@ -1444,7 +1445,7 @@ function getContent(url) {
         request.open('GET', url, false); // async = false
         request.onload = () => {payload.onload = request.responseText;};
         request.onerror = () => {payload.onerror = request.statusText;};
-        request.send();
+        request.send(); // blocked
 	
         console.log('> readyState:', request.readyState);
         console.log('> response:', request.response.substr(0,100));
