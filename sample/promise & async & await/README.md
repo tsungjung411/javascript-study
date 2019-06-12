@@ -1398,7 +1398,7 @@ Promise.reject('x1', 'y2', 'z3')
 
 <br>
 
-### 如何用 Promise 打包 XMLHttpRequest ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
+### [1] 如何用 Promise 打包 XMLHttpRequest ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
 ```javascript
 function getContent(url) {
     return new Promise((resolve, reject) => {
@@ -1425,6 +1425,35 @@ console.log('go! go! go!');
 > [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
 
 從這邊就可以證明，在 initExecutor 做的事是跑在 main thread
+
+<br>
+
+### [2][改寫] 如何用 Promise 打包 XMLHttpRequest 
+```javascript
+function getContent(url) {
+    return Promise.resolve().then(() => {
+        let payload = {};
+        let request = new XMLHttpRequest();
+        request.open('GET', url, false); // async = false
+        request.onload = () => {payload.onload = request.responseText;};
+        request.onerror = () => {payload.onerror = request.statusText;};
+        request.send();
+        if (payload.onerror || request.status != 200) {
+            throw request.statusText;
+        } else {
+            return payload.onload;
+        }
+    });
+}
+
+url = 'https://github.com/tsungjung41111/javascript-study/tree/master/sample/promise%20%26%20async%20%26%20await'
+getContent(url)
+    .then((value) => console.log('Content:', value))
+    .catch((reason) => console.log('Error:', reason));
+console.log('go! go! go!');
+```
+
+
 
 <br>
 <br>
