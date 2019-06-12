@@ -1406,7 +1406,13 @@ function getContent(url) {
         request.open('GET', url);
 	request.onload = () => resolve(request.responseText);
 	request.onerror = () => reject(request.statusText);
-	request.send();
+	request.send();	
+	
+        console.log('> readyState:', request.readyState);
+        console.log('> response:', request.response.substr(0,100));
+        console.log('> responseText:', request.responseText.substr(0,100));
+        console.log('> status:', request.status);
+        console.log('> statusText:', request.statusText);
     })
 }
 ```
@@ -1438,6 +1444,13 @@ function getContent(url) {
         request.onload = () => {payload.onload = request.responseText;};
         request.onerror = () => {payload.onerror = request.statusText;};
         request.send();
+	
+        console.log('> readyState:', request.readyState);
+        console.log('> response:', request.response.substr(0,100));
+        console.log('> responseText:', request.responseText.substr(0,100));
+        console.log('> status:', request.status);
+        console.log('> statusText:', request.statusText);
+	
         if (payload.onerror || request.status != 200) {
             throw request.statusText;
         } else {
