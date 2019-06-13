@@ -1403,7 +1403,57 @@ Promise.reject('x1', 'y2', 'z3')
 
 <br>
 
-### [9] 如何用 Promise 打包 XMLHttpRequest？ ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
+### [10] 如何用 Promise 打包 setTimeout？ ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises))
+```javascript
+var wait = function(ms) {
+    return new Promise(function(resolve, reject) {
+        setTimeout(resolve, ms);
+    });
+}
+
+console.log('>>>');
+wait(10 * 1000).then(() => {console.log('10 sec. passed');});
+console.log('<<<'); // won't be blocked
+```
+
+可以簡化為：
+```javascript
+var wait = ms => new Promise(function(resolve, reject) {
+    setTimeout(resolve, ms);
+});
+
+console.log('>>>');
+wait(10 * 1000).then(() => {console.log('10 sec. passed');});
+console.log('<<<'); // won't be blocked
+```
+
+在更簡化為：
+```javascript
+var wait = ms => new Promise(resolve => {setTimeout(resolve, ms);});
+
+console.log('>>>');
+wait(10 * 1000).then(() => {console.log('10 sec. passed');});
+console.log('<<<'); // won't be blocked
+```
+
+```javascript
+var wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+console.log('>>>');
+wait(10 * 1000).then(() => {console.log('10 sec. passed');});
+console.log('<<<'); // won't be blocked
+```
+
+執行結果：
+```
+>>>
+<<<
+10 sec. passed
+```
+
+<br>
+
+### [10] 如何用 Promise 打包 XMLHttpRequest？ ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
 ```javascript
 function getContent(url) {
     return new Promise((resolve, reject) => {
@@ -1413,7 +1463,7 @@ function getContent(url) {
 	request.onerror = () => reject(request.statusText);
 	request.send();	
 	
-	// 因為非同步(async = tru)，此階段尚未取得資料
+	// 因為非同步(async = true)，此階段尚未取得資料
         console.log('> readyState:', request.readyState); // = XMLHttpRequest.OPENED
         console.log('> response:', request.response.substr(0,100));
         console.log('> responseText:', request.responseText.substr(0,100));
@@ -1441,7 +1491,7 @@ console.log('go! go! go!');
 
 <br>
 
-### [10] 如何用 Promise 打包 XMLHttpRequest？ (改寫)
+### [11] 如何用 Promise 打包 XMLHttpRequest？ (改寫)
 ```javascript
 function getContent(url) {
     return Promise.resolve().then(() => {
