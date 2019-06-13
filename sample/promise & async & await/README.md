@@ -369,6 +369,10 @@ new Promise(doSomething)
 ```
 （又稱為 Promise 鏈）
 <br>
+示意圖：
+<br>![](http://imgk.zol.com.cn/dcbbs/3209/a3208865_s.jpg) ([出處](http://imgk.zol.com.cn/dcbbs/3209/a3208865_s.jpg))
+
+<br>
 <br>程式碼可在簡化為：
 ```javascript
 new Promise(doSomething)
