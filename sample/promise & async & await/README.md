@@ -1427,7 +1427,7 @@ wait(10 * 1000).then(() => {console.log('10 sec. passed');});
 console.log('<<<'); // won't be blocked
 ```
 
-在更簡化為：
+再更簡化為：
 ```javascript
 var wait = ms => new Promise(resolve => {setTimeout(resolve, ms);});
 
