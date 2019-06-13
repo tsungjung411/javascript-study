@@ -1440,7 +1440,7 @@ console.log('<<<'); // won't be blocked
 var wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 console.log('>>>');
-wait(10 * 1000).then(() => {console.log('10 sec. passed');});
+wait(10 * 1000).then(() => console.log('10 sec. passed'));
 console.log('<<<'); // won't be blocked
 ```
 
