@@ -1531,7 +1531,7 @@ function loadImage(url) {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url);
-        xhr.responseType = 'blob'; // image
+        xhr.responseType = 'blob';  // image: binary -> blob
         xhr.onload = () => {
             if (xhr.status == 200) {
                 // For example:
@@ -1574,11 +1574,17 @@ loadImage(url)
 ```
 
 圖片跟文字的主要差別在於：
-- ```xhr.responseType = 'blob'; // image```
-- ```url = window.URL.createObjectURL(image); // 將 image 轉成 hash code ```
+1. ```xhr.responseType = 'blob'; // image: binary -> blob```
+2. ```url = window.URL.createObjectURL(image); // 將 image 轉成 hash code ```
 
 如果把圖片當成文字處理，直接把 responseText 塞到 image 的 src，你會遇到：
 <br>![](images/xmlhttprequest_loadimage_responsetext.png)
+
+如果只有 [1]，沒有 [2]，你會遇到：
+<br>![](images/xmlhttprequest_loadimage_response_blob.png)
+
+如果只有 [2]，沒有 [1]，你會遇到：
+<br>![](images/xmlhttprequest_loadimage_response_to_url.png)
 
 <br>
 <br>
