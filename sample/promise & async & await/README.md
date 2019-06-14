@@ -1567,7 +1567,7 @@ var img = new Image(); // or // img = document.createElement('img');
 url = 'https://raw.githubusercontent.com/mdn/js-examples/master/promises-test/myLittleVader.jpg';
 loadImage(url)
 .then((image) => {
-    var url = window.URL.createObjectURL(image);
+    var url = window.URL.createObjectURL(image); // 將 image 轉成 hash code 
     img.src = url;
     document.body.appendChild(img);
 });
@@ -1575,7 +1575,10 @@ loadImage(url)
 
 圖片跟文字的主要差別在於：
 - ```xhr.responseType = 'blob'; // image```
+- ```url = window.URL.createObjectURL(image); // 將 image 轉成 hash code ```
 
+如果把圖片當成文字處理，直接把 responseText 塞到 image 的 src，你會遇到：
+<br>![](images/xmlhttprequest_loadimage_responsetext.png)
 
 <br>
 <br>
