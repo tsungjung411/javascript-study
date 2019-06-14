@@ -1586,6 +1586,9 @@ loadImage(url)
 如果只有 [2]，沒有 [1]，你會遇到：
 <br>![](images/xmlhttprequest_loadimage_response_to_url.png)
 
+當 [1] 和 [2] 都有，你會遇到：
+<br>```<img src="blob:null/b8b08851-2a2b-4ef2-8488-37a2fc740b0e">```
+
 <br>
 <br>
 
