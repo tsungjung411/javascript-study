@@ -1523,6 +1523,58 @@ getContent(url)
 console.log('go! go! go!');
 ```
 
+<br>
+
+### [12] 如何用 Promise 和 XMLHttpRequest 來實作非同步下載圖片 ([出處](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Promise))
+```javascript
+function loadImage(url) {
+    return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.responseType = 'blob'; // image
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                // For example:
+                // readyState: 4
+                // response: [object Blob]
+                // status: 200
+                // statusText: 'OK'
+                // responseText: 一堆亂碼
+                resolve(xhr.response);
+            } else {
+                // For example:
+                // readyState: 4
+                // response: [object Blob]
+                // status: 404
+                // statusText: 'Not Found'
+                reject('something wrong:' + xhr.responseText);
+            }
+        };
+        xhr.onerror = () => {
+            // readyState: 4
+            // response: null
+            // status: 0
+            // statusText: ''
+            reject('Network error'); 
+            // network unavailable, 
+            // has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, https.
+        };
+        xhr.send();
+    });
+}
+
+var img = new Image(); // or // img = document.createElement('img');
+url = 'https://raw.githubusercontent.com/mdn/js-examples/master/promises-test/myLittleVader.jpg';
+loadImage(url)
+.then((image) => {
+    var url = window.URL.createObjectURL(image);
+    img.src = url;
+    document.body.appendChild(img);
+});
+```
+
+圖片跟文字的主要差別在於：
+- ```xhr.responseType = 'blob'; // image```
 
 
 <br>
