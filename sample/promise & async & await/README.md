@@ -1630,7 +1630,7 @@ on 'URL': No function was found that matched the signature provided.
 
 <br>
 
-### [13] 在 Vue 上使用 async & await 帶來幫助？
+### [13] 在 Vue/Vuex 上使用 async & await 帶來幫助？
 看看實例：
 [async_and_await__on_vue.htm](async_and_await__on_vue.htm)
 
@@ -1646,8 +1646,8 @@ on 'URL': No function was found that matched the signature provided.
 << click
 ```
 
-- 使用 this.$store.dispatch(...) 到 action 是同步的，並非是非同步動作
-- 使用 this.$store.commit(...) 到 mutation 是同步的，並非是非同步動作
+- 使用 this.$store.dispatch(...) 到 action 是「同步的」，並非是非同步動作
+- 使用 this.$store.commit(...) 到 mutation 是「同步的」，並非是非同步動作
 
 <br>
 <br>
