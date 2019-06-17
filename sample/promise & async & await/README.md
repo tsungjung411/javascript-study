@@ -1649,6 +1649,10 @@ on 'URL': No function was found that matched the signature provided.
 - 使用 this.$store.dispatch(...) 到 action 是「同步的」，並非是非同步動作
 - 使用 this.$store.commit(...) 到 mutation 是「同步的」，並非是非同步動作
 
+
+- 基本上，「沒有一個網頁」有提供 Vue 的 async & await 的正確概念
+- 包括 Summer & 卡斯伯 都是提供錯誤的概念
+
 <br>
 <br>
 
