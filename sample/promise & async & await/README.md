@@ -1593,8 +1593,9 @@ on 'URL': No function was found that matched the signature provided.
     at loadImage.then (test.htm:62)
 ```
 
-當 [1] 和 [2] 都有，你會遇到：
+當 [1] 和 [2] 都有，表示轉換成功：
 <br>```<img src="blob:null/b8b08851-2a2b-4ef2-8488-37a2fc740b0e">```
+<br>顯示 null 的地方是用來表示「目前的網址」，本地端測試則顯示 null
 
 <br>
 <br>
