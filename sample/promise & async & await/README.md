@@ -1624,9 +1624,30 @@ on 'URL': No function was found that matched the signature provided.
     at loadImage.then (test.htm:62)
 ```
 
-當 [1] 和 [2] 都有，表示轉換成功：
+當 [1] 和 [2] 都有，你就會看到：
 <br>```<img src="blob:null/b8b08851-2a2b-4ef2-8488-37a2fc740b0e">```
 <br>顯示 null 的地方是用來表示「目前的網址」，本地端測試則顯示 null
+
+<br>
+
+### [13] 在 Vue 上使用 async & await 帶來幫助？
+看看實例：
+[async_and_await__on_vue.htm](async_and_await__on_vue.htm)
+
+執行結果，整個 tag 是對稱的：
+```
+>> click
+>> clickInBackground
+>> a: actIncrement
+>> m: mutIncrement: {__ob__: Observer}
+<< m: mutIncrement (Elapsed 5.482 sec)
+<< a: actIncrement: value: undefined
+<< clickInBackground: value: Promise {}
+<< click
+```
+
+- 使用 this.$store.dispatch(...) 到 action 是同步的，並非是非同步動作
+- 使用 this.$store.commit(...) 到 mutation 是同步的，並非是非同步動作
 
 <br>
 <br>
