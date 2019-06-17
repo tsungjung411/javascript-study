@@ -10,6 +10,7 @@
 <br>
 
 ## 進階學習資源
+ - [正宗 Promise 探討](sample/promise%20%26%20async%20%26%20await)
  - [12 Concepts That Will Level Up Your JavaScript Skills](https://hackernoon.com/12-javascript-concepts-that-will-level-up-your-development-skills-b37d16ad7104)
 
 <br>
