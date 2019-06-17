@@ -925,7 +925,7 @@ undefined
 
 ### 如何界定 await 區塊的範圍
 - [程式碼](async_and_await__alternating_test.js)
-- [執行結果](async_and_await__alternating_results.md)
+- [執行結果](async_and_await__alternating_test_results.md)
 
 <br>
 <br>
