@@ -927,6 +927,35 @@ undefined
 - [程式碼](async_and_await__alternating_test.js)
 - [執行結果](async_and_await__alternating_test_results.md)
 
+### 如果你有開發 Android 的經驗，你會發現 aync & await 其實就是：
+```java
+    private class MyAsyncTask extends AsyncTask<Integer, Integer, String> {
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            // TODO
+        }
+
+        @Override
+        protected String doInBackground(Integer... params) {
+            // TODO
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO
+        }
+    }
+}
+```
+async & await 其實就是類似 Android 的 **AsyncTask**
+
+- async 就是用來表示：這個 function 是 AsyncTask
+- 第一個 await 區塊表示：onPreExecute()
+- 其餘的 await 區塊表示：doInBackground(...)
+- 最後沒有 await 區塊表示：onPostExecute
+
 <br>
 <br>
 
