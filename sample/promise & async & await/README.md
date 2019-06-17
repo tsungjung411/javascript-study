@@ -1573,18 +1573,25 @@ loadImage(url)
 });
 ```
 
-圖片跟文字的主要差別在於：
+圖片跟文字的主要操作差別，在於圖片需要底下兩步驟：
 1. ```xhr.responseType = 'blob'; // image: binary -> blob```
 2. ```url = window.URL.createObjectURL(image); // 將 image 轉成 hash code ```
 
-如果把圖片當成文字處理，直接把 responseText 塞到 image 的 src，你會遇到：
+如果把圖片當成文字處理，直接把 response 塞到 image 的 src，你會遇到：
 <br>![](images/xmlhttprequest_loadimage_responsetext.png)
 
 如果只有 [1]，沒有 [2]，你會遇到：
-<br>![](images/xmlhttprequest_loadimage_response_blob.png)
+<br>```<img src="[object Blob]">```
+<br>(無法正確顯示圖片)
 
 如果只有 [2]，沒有 [1]，你會遇到：
 <br>![](images/xmlhttprequest_loadimage_response_to_url.png)
+<br>
+```
+Uncaught (in promise) TypeError: Failed to execute 'createObjectURL' 
+on 'URL': No function was found that matched the signature provided.
+    at loadImage.then (test.htm:62)
+```
 
 當 [1] 和 [2] 都有，你會遇到：
 <br>```<img src="blob:null/b8b08851-2a2b-4ef2-8488-37a2fc740b0e">```
