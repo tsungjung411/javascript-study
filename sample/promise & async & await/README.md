@@ -949,7 +949,9 @@ undefined
     }
 }
 ```
-async & await 其實就是類似 Android 的 **AsyncTask**
+範例程式碼是出自：https://xnfood.com.tw/multi-threads/
+
+<br>async & await 其實就是類似 Android 的 **AsyncTask**
 
 - async 就是用來表示：這個 function 是 AsyncTask
 - 第一個 await 區塊表示：onPreExecute()
