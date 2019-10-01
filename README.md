@@ -12,6 +12,7 @@
 ## 進階學習資源
  - [Promise 真相的探討](sample/promise%20%26%20async%20%26%20await)
  - [12 Concepts That Will Level Up Your JavaScript Skills](https://hackernoon.com/12-javascript-concepts-that-will-level-up-your-development-skills-b37d16ad7104)
+ - [ES2015 的 参数解构](https://github.com/lukehoban/es6features#destructuring)
 
 <br>
 
