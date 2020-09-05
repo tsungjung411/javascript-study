@@ -19,6 +19,7 @@
 
 
 <br>
+
 ## 辨識字元(char)
 - 新設備
   - 可從 event.key 或是 event.code / event.keyCode + shiftKey 去解析出字元，例如
