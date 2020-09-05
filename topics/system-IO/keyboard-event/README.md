@@ -1,6 +1,10 @@
 # KeyboardEvent 在不同設備下所產生的 key / code 值
 - 右三欄為 舊設備(Android 6.0.0 / Chrome 44.0.2403.133) 的結果
+  - 無 code, key 欄位
+  - 有 keyCode, which 欄位
 - 剩餘欄為 新設備(Windows10 / Chrome 85.0.4183.83 (正式版本) (64 位元)) 的結果
+  - 有 code, key, keyCode, which 欄位
+- 從下表可以看出 keyCode / which 兩欄位相等
 
 ## 複合控制鍵
 | code         |   key   | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier | code      | key       |
