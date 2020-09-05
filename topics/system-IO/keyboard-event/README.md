@@ -17,6 +17,7 @@
 ## 數字鍵(NumLock=OFF)
 | code           |   key   | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier | code | key |
 |----------------|:-------:|---------|-------|----------|---------|--------|---------|---------------|------|-----|
+| NumpadEnter    |  Enter  | 13      | 13    |          |         |        |         |               |      |     |
 | Numpad0        |    0    | 96      | 96    |          |         |        |         |               |      |     |
 | Numpad1        |    1    | 97      | 97    |          |         |        |         |               |      |     |
 | Numpad2        |    2    | 98      | 98    |          |         |        |         |               |      |     |
@@ -33,13 +34,11 @@
 | NumpadDecimal  |    .    | 110     | 110   |          |         |        |         |               |      |     |
 | NumpadDivide   |    /    | 111     | 111   |          |         |        |         |               |      |     |
 | NumLock        | NumLock | 144     | 144   |          |         |        |         |               |      |     |
-| NumpadEnter    |  Enter  | 13      | 13    |          |         |        |         |               |      |     |
 
 
 ## 數字鍵(NumLock=ON)
 | code                 |     key    | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier | code | key |
 |----------------------|:----------:|---------|-------|----------|---------|--------|---------|---------------|------|-----|
-| Numpad0 (NumLock=ON) |   Insert   | 45      | 45    |          |         |        |         |               |      |     |
 | Numpad1 (NumLock=ON) |     End    | 35      | 35    |          |         |        |         | End           |      |     |
 | Numpad2 (NumLock=ON) |  ArrowDown | 40      | 40    |          |         |        |         | Down          |      |     |
 | Numpad3 (NumLock=ON) |  PageDown  | 34      | 34    |          |         |        |         | PageDown      |      |     |
@@ -49,5 +48,6 @@
 | Numpad7 (NumLock=ON) |    Home    | 36      | 36    |          |         |        |         | Home          |      |     |
 | Numpad8 (NumLock=ON) |   ArrowUp  | 38      | 38    |          |         |        |         | Up            |      |     |
 | Numpad9 (NumLock=ON) |   PageUp   | 33      | 33    |          |         |        |         | PageUp        |      |     |
+| Numpad0 (NumLock=ON) |   Insert   | 45      | 45    |          |         |        |         |               |      |     |
 | NumpadDecimal        |   Delete   | 46      | 46    |          |         |        |         | U+007F        |      |     |
 
