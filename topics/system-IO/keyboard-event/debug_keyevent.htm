@@ -1,0 +1,90 @@
+<html>
+<head>
+	<title>Debug the keyevent</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+		th, td {
+			border: 1px solid;
+			padding: 0em 0.25em;
+		}
+	</style>
+</head>
+<body>
+
+<h3>Show a key from the KeyboardEvent</h3>
+<input type="text" autofocus placeholder="press any key" onkeydown="onKeyDown(event)">
+<p>
+<result id="result">
+
+</result>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyIdentifier">KeyboardEvent.keyIdentifier (non-standard) (<del>Deprecated</del>)</a>
+
+</body>
+
+<script>
+	var input = document.getElementById("result");
+	input.focus();
+
+	function onKeyDown(event) {
+		event.preventDefault(); // debug
+		
+		event.target.setSelectionRange(
+			0, event.target.value.length);
+		var info = "";
+		var keyList;
+
+		// show common info
+		info += "<table style='display: inline;'>";
+		info += "\n<tr><th>key</th><th>value</th></tr>";
+		keyList = ["code", "key", "keyCode", "which", "keyIdentifier"];
+		for (var key of keyList) {
+			info += "<tr><td>" + key + "</td><td>" + event[key] + "</td></tr>";
+		}
+		info += "</table>";
+		
+		info += "<table style='display: inline;'>";
+		info += "\n<tr><th>key</th><th>value</th></tr>";
+		keyList = ["shiftKey",  "ctrlKey", "altKey",  "metaKey"];
+		for (var key of keyList) {
+			info += "<tr><td>" + key + "</td><td>" + event[key] + "</td></tr>";
+		}
+		info += "</table>";
+
+		// [1] correct keys
+		// [2] sort the keys in ascending
+		keyList = [];
+		for (var key in event) {
+			keyList.push(key);
+		}
+		keyList.sort();
+
+		// [3] shows the full dynamic info
+		info += "<table>";
+		info += "\n<tr><th>key</th><th>value</th></tr>";
+		for (var key of keyList) {
+			if (key != key.toUpperCase()) {
+				info += "<tr><td>" + key + "</td><td>" + event[key] + "</td></tr>";
+			}
+		}
+		info += "</table><br>";
+
+		// [4] shows the full static info
+		info += "<table>";
+		info += "\n<tr><th>key</th><th>value</th></tr>";
+		for (var key of keyList) {
+			if (key == key.toUpperCase()) {
+				info += "<tr><td>" + key + "</td><td>" + event[key] + "</td></tr>";
+			}
+		}
+		info += "</table><br>";
+
+		// shows the result table
+		var result = document.getElementById("result");
+		result.innerHTML = info;
+		console.log(info);
+	}
+</script>
+</html>
