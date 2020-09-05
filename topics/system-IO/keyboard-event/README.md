@@ -1,14 +1,14 @@
 # KeyboardEvent 在不同設備下所產生的 key / code 值
-- 最右邊一欄：舊設備(Android 6.0.0 / Chrome 44.0.2403.133) 的測試結果
+- 舊設備(Android 6.0.0 / Chrome 44.0.2403.133) 的測試結果
   - 無 code, key 欄位
-  - 有 keyIdentifier, keyCode, which 欄位可用
-- 其餘欄為：新設備(Windows10 / Chrome 85.0.4183.83 (正式版本) (64 位元)) 的測試結果
+  - 有 keyIdentifier(最右邊一欄), keyCode, which 欄位可用
+- 新設備(Windows10 / Chrome 85.0.4183.83 (正式版本) (64 位元)) 的測試結果
   - 有 code, key, keyCode, which 欄位
 - 從下表可以看出 keyCode / which 兩欄位相等
 
 <br>
 
-## 變數代表的意思
+## 屬性代表的意思
 | 屬性          | 意義                |
 |---------------|--------------------|
 | key           | 字元符號            |
@@ -17,49 +17,6 @@
 | code          | 實體按鍵名稱        |
 | keyIdentifier | 實體按鍵名稱(或代碼) |
 
-
-<br>
-
-## 辨識字元(char)
-- 新設備
-  - 可從 event.key 或是 event.code / event.keyCode + shiftKey 去解析出字元，例如
-    - key = 'a', key = 'A'
-    - code:KeyA + shiftKey:OFF = 'a' 
-    - code:KeyA + shiftKey:ON = 'A'
-    - keyCode:65 + shiftKey:OFF = 'a'
-    - keyCode:65 + shiftKey:ON = 'A'
-    - 但仍有可能受到 Caps=ON 影響
-- 舊設備
-  - 需要從 event.keyCode + shiftKey 去解析出字元，例如
-    - keyCode:65 + shiftKey:OFF = 'a'
-    - keyCode:65 + shiftKey:ON = 'A'
-    - 但仍有可能受到 Caps=ON 影響
-- 不同的字元(char)，可能是由不同的鍵值(event.key)驅動，例如
-  - CapsLock=OFF
-    - event.code:KeyA
-      <br>→ event.key = 'a'
-      <br>→ event.keyCode = 65
-  - CapsLock=ON
-    - event.code:KeyA + shiftKey
-      <br>→ event.key = 'a'
-      <br>→ event.keyCode = 65
-    
-     
-
-<br>
-
-## 辨識按鍵(event.code / event.keyIdentifier)
-- 舊設備要用 event.keyIdentifier (被捨棄)，新設備要用 event.code
-  ```
-  // 讓舊設備相容於新設備
-  if (event.code == undefined) {
-      event.code = event.keyIdentifier;
-  }
-  ```
-- 不同的鍵值(按鍵的值=event.key)，可能是由不同的按鍵(event.code / event.keyIdentifier)驅動，例如
-  - ShiftLeft 鍵或 ShiftRight 鍵都可以產生 Shift 鍵值
-  - Enter 鍵或 NumpadEnter 鍵都可以產生 Enter 鍵值
-  - ArrowLeft 鍵或 Numpad4(NumLock=ON) 鍵都可以產生 ArrowLeft 鍵值
 
 <br> 
   
@@ -182,4 +139,48 @@
 | KeyI   | Process | 229     | 229   | ㄛ   |
 | Digit3 | Process | 229     | 229   | ˇ (我，有候選清單)|
 | Enter  | Process | 229     | 229   | 我   |
+
+
+<br>
+
+## 辨識字元(char)
+- 新設備
+  - 可從 event.key 或是 event.code / event.keyCode + shiftKey 去解析出字元，例如
+    - key = 'a', key = 'A'
+    - code:KeyA + shiftKey:OFF = 'a' 
+    - code:KeyA + shiftKey:ON = 'A'
+    - keyCode:65 + shiftKey:OFF = 'a'
+    - keyCode:65 + shiftKey:ON = 'A'
+    - 但仍有可能受到 Caps=ON 影響
+- 舊設備
+  - 需要從 event.keyCode + shiftKey 去解析出字元，例如
+    - keyCode:65 + shiftKey:OFF = 'a'
+    - keyCode:65 + shiftKey:ON = 'A'
+    - 但仍有可能受到 Caps=ON 影響
+- 不同的字元(char)，可能是由不同的鍵值(event.key)驅動，例如
+  - CapsLock=OFF
+    - event.code:KeyA
+      <br>→ event.key = 'a'
+      <br>→ event.keyCode = 65
+  - CapsLock=ON
+    - event.code:KeyA + shiftKey
+      <br>→ event.key = 'a'
+      <br>→ event.keyCode = 65
+    
+     
+
+<br>
+
+## 辨識按鍵(event.code / event.keyIdentifier)
+- 舊設備要用 event.keyIdentifier (被捨棄)，新設備要用 event.code
+  ```
+  // 讓舊設備相容於新設備
+  if (event.code == undefined) {
+      event.code = event.keyIdentifier;
+  }
+  ```
+- 不同的鍵值(按鍵的值=event.key)，可能是由不同的按鍵(event.code / event.keyIdentifier)驅動，例如
+  - ShiftLeft 鍵或 ShiftRight 鍵都可以產生 Shift 鍵值
+  - Enter 鍵或 NumpadEnter 鍵都可以產生 Enter 鍵值
+  - ArrowLeft 鍵或 Numpad4(NumLock=ON) 鍵都可以產生 ArrowLeft 鍵值
 
