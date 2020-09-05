@@ -115,9 +115,10 @@
 <br>
 
 ## 中文字母鍵
-| code   |   key   | keyCode | which | 注音 |   |   |   |   |
-|--------|:-------:|---------|-------|------|---|---|---|---|
-| KeyJ   | Process | 229     | 229   | ㄨ   |   |   |   |   |
-| KeyI   | Process | 229     | 229   | ㄛ   |   |   |   |   |
-| Digit3 | Process | 229     | 229   | ˇ    |   |   |   |   |
-| Enter  | Process | 229     | 229   | 我   |   |   |   |   |
+| code   |   key   | keyCode | which | 注音 |
+|--------|:-------:|---------|-------|------|
+| KeyJ   | Process | 229     | 229   | ㄨ   |
+| KeyI   | Process | 229     | 229   | ㄛ   |
+| Digit3 | Process | 229     | 229   | ˇ    |
+| Enter  | Process | 229     | 229   | 我   |
+
