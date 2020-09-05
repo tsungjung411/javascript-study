@@ -1,23 +1,47 @@
 # KeyboardEvent 在不同設備下所產生的 key / code 值
 - 最右邊一欄：舊設備(Android 6.0.0 / Chrome 44.0.2403.133) 的測試結果
   - 無 code, key 欄位
-  - 但有 keyCode, which 欄位可用
+  - 有 keyIdentifier, keyCode, which 欄位可用
 - 其餘欄為：新設備(Windows10 / Chrome 85.0.4183.83 (正式版本) (64 位元)) 的測試結果
   - 有 code, key, keyCode, which 欄位
 - 從下表可以看出 keyCode / which 兩欄位相等
 
 <br>
 
-## 辨識字元(char) (event.keyCode / event.which)
-- 可以使用 event.keyCode 或 event.which
-- 不同的字元(char) (event.keyCode / event.which)，可能是由不同的鍵值(event.key)驅動，例如
+## 變數代表的意思
+| 屬性          | 意義                |
+|---------------|--------------------|
+| key           | 字元符號            |
+| keyCode       | 字元碼              |
+| which         | 指向 keyCode       |
+| code          | 實體按鍵名稱        |
+| keyIdentifier | 實體按鍵名稱(或代碼) |
+
+
+<br>
+## 辨識字元(char)
+- 新設備
+  - 可從 event.key 或是 event.code / event.keyCode + shiftKey 去解析出字元，例如
+    - key = 'a', key = 'A'
+    - code:KeyA + shiftKey:OFF = 'a' 
+    - code:KeyA + shiftKey:ON = 'A'
+    - keyCode:65 + shiftKey:OFF = 'a'
+    - keyCode:65 + shiftKey:ON = 'A'
+    - 但仍有可能受到 Caps=ON 影響
+- 舊設備
+  - 需要從 event.keyCode + shiftKey 去解析出字元，例如
+    - keyCode:65 + shiftKey:OFF = 'a'
+    - keyCode:65 + shiftKey:ON = 'A'
+    - 但仍有可能受到 Caps=ON 影響
+- 不同的字元(char)，可能是由不同的鍵值(event.key)驅動，例如
   - CapsLock=OFF
-    - event.code=KeyA
+    - event.code:KeyA
       <br>→ event.key = 'a'
-      <br>→ event.keyCode = event.which = 65
-    - event.code=KeyA + shiftKey
+      <br>→ event.keyCode = 65
+  - CapsLock=ON
+    - event.code:KeyA + shiftKey
       <br>→ event.key = 'a'
-      <br>→ event.keyCode = event.which = 65
+      <br>→ event.keyCode = 65
     
      
 
