@@ -96,5 +96,28 @@
 | Numpad8 (NumLock=ON) |   ArrowUp  | 38      | 38    |          |         |        |         | Up            |
 | Numpad9 (NumLock=ON) |   PageUp   | 33      | 33    |          |         |        |         | PageUp        |
 | Numpad0 (NumLock=ON) |   Insert   | 45      | 45    |          |         |        |         |               |
-| NumpadDecimal        |   Delete   | 46      | 46    |          |         |        |         | U+007F        |
+| NumpadDecimal (NumLock=ON) |   Delete   | 46      | 46    |          |         |        |         | U+007F        |
 
+<br>
+
+## 英文字母鍵
+| code           | key | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier |
+|----------------|:---:|---------|-------|----------|---------|--------|---------|---------------|
+| KeyA           |  A  | 65      | 65    | T        |         |        |         |               |
+| KeyA           |  a  | 65      | 65    |          |         |        |         |               |
+| KeyA (Caps=ON) |  A  | 65      | 65    |          |         |        |         |               |
+| KeyA (Caps=ON) |  a  | 65      | 65    | T        |         |        |         |               |
+| KeyZ           |  Z  | 90      | 90    | T        |         |        |         |               |
+| KeyZ           |  z  | 90      | 90    |          |         |        |         |               |
+| KeyZ (Caps=ON) |  Z  | 90      | 90    |          |         |        |         |               |
+| KeyZ (Caps=ON) |  z  | 90      | 90    | T        |         |        |         |               |
+
+<br>
+
+## 中文字母鍵
+| code   |   key   | keyCode | which | 注音 |   |   |   |   |
+|--------|:-------:|---------|-------|------|---|---|---|---|
+| KeyJ   | Process | 229     | 229   | ㄨ   |   |   |   |   |
+| KeyI   | Process | 229     | 229   | ㄛ   |   |   |   |   |
+| Digit3 | Process | 229     | 229   | ˇ    |   |   |   |   |
+| Enter  | Process | 229     | 229   | 我   |   |   |   |   |
