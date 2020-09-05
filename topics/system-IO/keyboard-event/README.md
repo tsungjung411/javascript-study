@@ -33,6 +33,10 @@
 | PageDown   |  PageDown  | 34      | 34    |          |         |        |         |               |
 | End        |     End    | 35      | 35    |          |         |        |         |               |
 | Home       |    Home    | 36      | 36    |          |         |        |         |               |
+| ArrowLeft  |  ArrowLeft | 37      | 37    |          |         |        |         |               |
+| ArrowUp    |   ArrowUp  | 38      | 38    |          |         |        |         |               |
+| ArrowRight | ArrowRight | 39      | 39    |          |         |        |         |               |
+| ArrowDown  |  ArrowDown | 40      | 40    |          |         |        |         |               |
 | Insert     |   Insert   | 45      | 45    |          |         |        |         |               |
 | Delete     |   Delete   | 46      | 46    |          |         |        |         | U+007F        |
 | F1         |     F1     | 112     | 112   |          |         |        |         | F1            |
