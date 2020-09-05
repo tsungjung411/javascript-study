@@ -2,7 +2,7 @@
 - 右三欄為 舊設備(Android 6.0.0 / Chrome 44.0.2403.133) 的結果
 - 剩餘欄為 新設備(Windows10 / Chrome 85.0.4183.83 (正式版本) (64 位元)) 的結果
 
-## 控制鍵
+## 複合控制鍵
 | code         |   key   | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier | code      | key       |
 |--------------|:-------:|---------|-------|----------|---------|--------|---------|---------------|-----------|-----------|
 | ShiftLeft    |  Shift  | 16      | 16    | T        |         |        |         | U+00A0        | undefined | undefined |
@@ -13,6 +13,32 @@
 | AltRight     |   Alt   | 18      | 18    |          |         | T      |         | U+00A5        | undefined | undefined |
 | MetaLeft     |   Meta  | 91      | 91    |          |         |        | T       | -             | undefined | undefined |
 | MetaRight    |   Meta  | 92      | 92    |          |         |        | T       | -             | undefined | undefined |
+
+<br>
+
+## 指令鍵
+| code       |     key    | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier | code      | key       |
+|------------|:----------:|---------|-------|----------|---------|--------|---------|---------------|-----------|-----------|
+| Backspace  |  Backspace | 8       | 8     |          |         |        |         | U+0008        | undefined | undefined |
+| Tab        |     Tab    | 9       | 9     |          |         |        |         |               |           |           |
+| Enter      |    Enter   | 13      | 13    |          |         |        |         | Enter         | undefined | undefined |
+| Pause      |    Pause   | 19      | 19    |          |         |        |         |               |           |           |
+| CapsLock   |  CapsLock  | 20      | 20    |          |         |        |         | CapsLock      | undefined | undefined |
+| Escape     |   Escape   | 27      | 27    |          |         |        |         | -             | undefined | undefined |
+| PageUp     |   PageUp   | 33      | 33    |          |         |        |         |               |           |           |
+| PageDown   |  PageDown  | 34      | 34    |          |         |        |         |               |           |           |
+| End        |     End    | 35      | 35    |          |         |        |         |               |           |           |
+| Home       |    Home    | 36      | 36    |          |         |        |         |               |           |           |
+| Insert     |   Insert   | 45      | 45    |          |         |        |         |               |           |           |
+| Delete     |   Delete   | 46      | 46    |          |         |        |         | U+007F        |           |           |
+| F1         |     F1     | 112     | 112   |          |         |        |         | F1            | undefined | undefined |
+| F2         |     F2     | 113     | 113   |          |         |        |         | F2            | undefined | undefined |
+| F12        |     F12    | 123     | 123   |          |         |        |         | F12           | undefined | undefined |
+| ScrollLock | ScrollLock | 145     | 145   |          |         |        |         |               |           |           |
+| Backquote  |      `     | 192     | 192   |          |         |        |         | U+00C0        | undefined | undefined |
+| Backquote  |     ~      | 192     | 192   | T        |         |        |         | U+00C0        | undefined | undefined |
+
+<br>
 
 ## 數字鍵(NumLock=OFF)
 | code           |   key   | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier | code | key |
@@ -35,6 +61,7 @@
 | NumpadDivide   |    /    | 111     | 111   |          |         |        |         |               |      |     |
 | NumLock        | NumLock | 144     | 144   |          |         |        |         |               |      |     |
 
+<br>
 
 ## 數字鍵(NumLock=ON)
 | code                 |     key    | keyCode | which | shiftKey | ctrlKey | altKey | metaKey | keyIdentifier | code | key |
